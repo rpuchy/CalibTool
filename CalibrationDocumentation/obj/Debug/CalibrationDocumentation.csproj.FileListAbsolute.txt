@@ -1,0 +1,11 @@
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\bin\Debug\CalibrationDocumentation.exe.config
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\bin\Debug\CalibrationDocumentation.exe
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\bin\Debug\CalibrationDocumentation.pdb
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csprojResolveAssemblyReference.cache
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Form1.resources
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Properties.Resources.resources
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csproj.GenerateResource.Cache
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.exe
+C:\Code\CalibrationDocumentation\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.pdb
