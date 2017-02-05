@@ -157,7 +157,7 @@ namespace CalibrationDocumentation
         
         private void button3_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
+    
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
@@ -173,7 +173,7 @@ namespace CalibrationDocumentation
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
+
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
@@ -189,7 +189,7 @@ namespace CalibrationDocumentation
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
+           
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = "c:\\";
@@ -205,7 +205,7 @@ namespace CalibrationDocumentation
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Stream myStream;
+         
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "Word Document files (*.docx)|*.txt|All files (*.*)|*.*";

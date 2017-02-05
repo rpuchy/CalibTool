@@ -1,100 +1,100 @@
 Wildcard,File,XPATH
-@@CALIBDATE@@,NewFile,/Simulation/Params/EffectiveDate|/Simulation/Params/effective_date
-@@OLDDATE@@,OldFile,/Simulation/Params/EffectiveDate|/Simulation/Params/effective_date
-@@OLDHWALPHAS@@,OldFile,//Model[Name='AUYieldCurve']//MeanReversionShortRate|//Model[Name='AUYieldCurve']//mean_reversion_shortRate
-@@OLDHWALPHAA@@,OldFile,//Model[Name='AUYieldCurve']//MeanReversionAdditionalParam|//Model[Name='AUYieldCurve']//mean_reversion_additional_param
-@@OLDHWSIGMAS@@,OldFile,//Model[Name='AUYieldCurve']//VolatilityShortRate|//Model[Name='AUYieldCurve']//Volatility_short_rate
-@@OLDHWSIGMAA@@,OldFile,//Model[Name='AUYieldCurve']//VolatilityAdditionalParam|//Model[Name='AUYieldCurve']//volatility_additional_param
-@@OLDHWGAMMA@@,OldFile,//Model[Name='AUYieldCurve']//MarketPriceOfRisk|//Model[Name='AUYieldCurve']//market_price_of_risk
-@@NEWHWALPHAs@@,NewFile,//Model[Name='AUYieldCurve']//MeanReversionShortRate|//Model[Name='AUYieldCurve']//mean_reversion_shortRate
-@@NEWHWALPHAA@@,NewFile,//Model[Name='AUYieldCurve']//MeanReversionAdditionalParam|//Model[Name='AUYieldCurve']//mean_reversion_additional_param
-@@NEWHWSIGMAS@@,NewFile,//Model[Name='AUYieldCurve']//VolatilityShortRate|//Model[Name='AUYieldCurve']//Volatility_short_rate
-@@NEWHWSIGMAA@@,NewFile,//Model[Name='AUYieldCurve']//VolatilityAdditionalParam|//Model[Name='AUYieldCurve']//volatility_additional_param
-@@NEWHWGAMMA@@,NewFile,//Model[Name='AUYieldCurve']//MarketPriceOfRisk|//Model[Name='AUYieldCurve']//market_price_of_risk
-@@OLDCASH1_5@@,,
-@@OLDCASH1_25@@,,
-@@OLDCASH1_50@@,,
-@@OLDCASH1_75@@,,
-@@OLDCASH1_95@@,,
-@@OLDCASH1_MU@@,,
-@@OLDCASH1_VOL@@,,
-@@OLDCASH5_5@@,,
-@@OLDCASH5_25@@,,
-@@OLDCASH5_50@@,,
-@@OLDCASH5_75@@,,
-@@OLDCASH5_95@@,,
-@@OLDCASH5_MU@@,,
-@@OLDCASH5_VOL@@,,
-@@OLDCASH10_5@@,,
-@@OLDCASH10_25@@,,
-@@OLDCASH10_50@@,,
-@@OLDCASH10_75@@,,
-@@OLDCASH10_95@@,,
-@@OLDCASH10_MU@@,,
-@@OLDCASH10_VOL@@,,
-@@OLDCASH15_5@@,,
-@@OLDCASH15_25@@,,
-@@OLDCASH15_50@@,,
-@@OLDCASH15_75@@,,
-@@OLDCASH15_95@@,,
-@@OLDCASH15_MU@@,,
-@@OLDCASH15_VOL@@,,
-@@OLDCASH25_5@@,,
-@@OLDCASH25_25@@,,
-@@OLDCASH25_50@@,,
-@@OLDCASH25_75@@,,
-@@OLDCASH25_95@@,,
-@@OLDCASH25_MU@@,,
-@@OLDCASH25_VOL@@,,
-@@OLDCASH30_5@@,,
-@@OLDCASH30_25@@,,
-@@OLDCASH30_50@@,,
-@@OLDCASH30_75@@,,
-@@OLDCASH30_95@@,,
-@@OLDCASH30_MU@@,,
-@@OLDCASH30_VOL@@,,
-@@NEWCASH1_5@@,,
-@@NEWCASH1_25@@,,
-@@NEWCASH1_50@@,,
-@@NEWCASH1_75@@,,
-@@NEWCASH1_95@@,,
-@@NEWCASH1_MU@@,,
-@@NEWCASH1_VOL@@,,
-@@NEWCASH5_5@@,,
-@@NEWCASH5_25@@,,
-@@NEWCASH5_50@@,,
-@@NEWCASH5_75@@,,
-@@NEWCASH5_95@@,,
-@@NEWCASH5_MU@@,,
-@@NEWCASH5_VOL@@,,
-@@NEWCASH10_5@@,,
-@@NEWCASH10_25@@,,
-@@NEWCASH10_50@@,,
-@@NEWCASH10_75@@,,
-@@NEWCASH10_95@@,,
-@@NEWCASH10_MU@@,,
-@@NEWCASH10_VOL@@,,
-@@NEWCASH15_5@@,,
-@@NEWCASH15_25@@,,
-@@NEWCASH15_50@@,,
-@@NEWCASH15_75@@,,
-@@NEWCASH15_95@@,,
-@@NEWCASH15_MU@@,,
-@@NEWCASH15_VOL@@,,
-@@NEWCASH25_5@@,,
-@@NEWCASH25_25@@,,
-@@NEWCASH25_50@@,,
-@@NEWCASH25_75@@,,
-@@NEWCASH25_95@@,,
-@@NEWCASH25_MU@@,,
-@@NEWCASH25_VOL@@,,
-@@NEWCASH30_5@@,,
-@@NEWCASH30_25@@,,
-@@NEWCASH30_50@@,,
-@@NEWCASH30_75@@,,
-@@NEWCASH30_95@@,,
-@@NEWCASH30_MU@@,,
-@@NEWCASH30_VOL@@,,
+@@CALIBDATE@@,NewCalibFile,/Simulation/Params/EffectiveDate|/Simulation/Params/effective_date
+@@OLDDATE@@,OldCalibFile,/Simulation/Params/EffectiveDate|/Simulation/Params/effective_date
+@@OLDHWALPHAS@@,OldCalibFile,//Model[Name='AUYieldCurve']//MeanReversionShortRate|//Model[Name='AUYieldCurve']//mean_reversion_shortRate
+@@OLDHWALPHAA@@,OldCalibFile,//Model[Name='AUYieldCurve']//MeanReversionAdditionalParam|//Model[Name='AUYieldCurve']//mean_reversion_additional_param
+@@OLDHWSIGMAS@@,OldCalibFile,//Model[Name='AUYieldCurve']//VolatilityShortRate|//Model[Name='AUYieldCurve']//Volatility_short_rate
+@@OLDHWSIGMAA@@,OldCalibFile,//Model[Name='AUYieldCurve']//VolatilityAdditionalParam|//Model[Name='AUYieldCurve']//volatility_additional_param
+@@OLDHWGAMMA@@,OldCalibFile,//Model[Name='AUYieldCurve']//MarketPriceOfRisk|//Model[Name='AUYieldCurve']//market_price_of_risk
+@@NEWHWALPHAs@@,NewCalibFile,//Model[Name='AUYieldCurve']//MeanReversionShortRate|//Model[Name='AUYieldCurve']//mean_reversion_shortRate
+@@NEWHWALPHAA@@,NewCalibFile,//Model[Name='AUYieldCurve']//MeanReversionAdditionalParam|//Model[Name='AUYieldCurve']//mean_reversion_additional_param
+@@NEWHWSIGMAS@@,NewCalibFile,//Model[Name='AUYieldCurve']//VolatilityShortRate|//Model[Name='AUYieldCurve']//Volatility_short_rate
+@@NEWHWSIGMAA@@,NewCalibFile,//Model[Name='AUYieldCurve']//VolatilityAdditionalParam|//Model[Name='AUYieldCurve']//volatility_additional_param
+@@NEWHWGAMMA@@,NewCalibFile,//Model[Name='AUYieldCurve']//MarketPriceOfRisk|//Model[Name='AUYieldCurve']//market_price_of_risk
+@@OLDCASH1_5@@,OldOutputFile,
+@@OLDCASH1_25@@,OldOutputFile,
+@@OLDCASH1_50@@,OldOutputFile,
+@@OLDCASH1_75@@,OldOutputFile,
+@@OLDCASH1_95@@,OldOutputFile,
+@@OLDCASH1_MU@@,OldOutputFile,
+@@OLDCASH1_VOL@@,OldOutputFile,
+@@OLDCASH5_5@@,OldOutputFile,
+@@OLDCASH5_25@@,OldOutputFile,
+@@OLDCASH5_50@@,OldOutputFile,
+@@OLDCASH5_75@@,OldOutputFile,
+@@OLDCASH5_95@@,OldOutputFile,
+@@OLDCASH5_MU@@,OldOutputFile,
+@@OLDCASH5_VOL@@,OldOutputFile,
+@@OLDCASH10_5@@,OldOutputFile,
+@@OLDCASH10_25@@,OldOutputFile,
+@@OLDCASH10_50@@,OldOutputFile,
+@@OLDCASH10_75@@,OldOutputFile,
+@@OLDCASH10_95@@,OldOutputFile,
+@@OLDCASH10_MU@@,OldOutputFile,
+@@OLDCASH10_VOL@@,OldOutputFile,
+@@OLDCASH15_5@@,OldOutputFile,
+@@OLDCASH15_25@@,OldOutputFile,
+@@OLDCASH15_50@@,OldOutputFile,
+@@OLDCASH15_75@@,OldOutputFile,
+@@OLDCASH15_95@@,OldOutputFile,
+@@OLDCASH15_MU@@,OldOutputFile,
+@@OLDCASH15_VOL@@,OldOutputFile,
+@@OLDCASH25_5@@,OldOutputFile,
+@@OLDCASH25_25@@,OldOutputFile,
+@@OLDCASH25_50@@,OldOutputFile,
+@@OLDCASH25_75@@,OldOutputFile,
+@@OLDCASH25_95@@,OldOutputFile,
+@@OLDCASH25_MU@@,OldOutputFile,
+@@OLDCASH25_VOL@@,OldOutputFile,
+@@OLDCASH30_5@@,OldOutputFile,
+@@OLDCASH30_25@@,OldOutputFile,
+@@OLDCASH30_50@@,OldOutputFile,
+@@OLDCASH30_75@@,OldOutputFile,
+@@OLDCASH30_95@@,OldOutputFile,
+@@OLDCASH30_MU@@,OldOutputFile,
+@@OLDCASH30_VOL@@,OldOutputFile,
+@@NEWCASH1_5@@,NewOutputFile,
+@@NEWCASH1_25@@,NewOutputFile,
+@@NEWCASH1_50@@,NewOutputFile,
+@@NEWCASH1_75@@,NewOutputFile,
+@@NEWCASH1_95@@,NewOutputFile,
+@@NEWCASH1_MU@@,NewOutputFile,
+@@NEWCASH1_VOL@@,NewOutputFile,
+@@NEWCASH5_5@@,NewOutputFile,
+@@NEWCASH5_25@@,NewOutputFile,
+@@NEWCASH5_50@@,NewOutputFile,
+@@NEWCASH5_75@@,NewOutputFile,
+@@NEWCASH5_95@@,NewOutputFile,
+@@NEWCASH5_MU@@,NewOutputFile,
+@@NEWCASH5_VOL@@,NewOutputFile,
+@@NEWCASH10_5@@,NewOutputFile,
+@@NEWCASH10_25@@,NewOutputFile,
+@@NEWCASH10_50@@,NewOutputFile,
+@@NEWCASH10_75@@,NewOutputFile,
+@@NEWCASH10_95@@,NewOutputFile,
+@@NEWCASH10_MU@@,NewOutputFile,
+@@NEWCASH10_VOL@@,NewOutputFile,
+@@NEWCASH15_5@@,NewOutputFile,
+@@NEWCASH15_25@@,NewOutputFile,
+@@NEWCASH15_50@@,NewOutputFile,
+@@NEWCASH15_75@@,NewOutputFile,
+@@NEWCASH15_95@@,NewOutputFile,
+@@NEWCASH15_MU@@,NewOutputFile,
+@@NEWCASH15_VOL@@,NewOutputFile,
+@@NEWCASH25_5@@,NewOutputFile,
+@@NEWCASH25_25@@,NewOutputFile,
+@@NEWCASH25_50@@,NewOutputFile,
+@@NEWCASH25_75@@,NewOutputFile,
+@@NEWCASH25_95@@,NewOutputFile,
+@@NEWCASH25_MU@@,NewOutputFile,
+@@NEWCASH25_VOL@@,NewOutputFile,
+@@NEWCASH30_5@@,NewOutputFile,
+@@NEWCASH30_25@@,NewOutputFile,
+@@NEWCASH30_50@@,NewOutputFile,
+@@NEWCASH30_75@@,NewOutputFile,
+@@NEWCASH30_95@@,NewOutputFile,
+@@NEWCASH30_MU@@,NewOutputFile,
+@@NEWCASH30_VOL@@,NewOutputFile,
 @@OLDHWCASHPERCENTILE@@,,
 @@OLDHWHIST@@,,
 @@NEWHWPERCENTILE@@,,
@@ -267,14 +267,14 @@ Wildcard,File,XPATH
 @@NEWSPOT3030_95@@,,
 @@NEWSPOT3030_MU@@,,
 @@NEWSPOT3030_VOL@@,,
-@@OLDCPIR0@@,OldFile,//Model[Name='CPI']//StartingInflationRate|//Model[Name='CPI']//starting_inflation_rate
-@@OLDCPIALPHA@@,OldFile,//Model[Name='CPI']//MeanReversionStrength|//Model[Name='CPI']//mean_reversion_strength
-@@OLDCPIMU@@,OldFile,//Model[Name='CPI']//MeanReversionLevel|//Model[Name='CPI']//mean_reversion_level
-@@OLDCPISIGMA@@,OldFile,//Model[Name='CPI']//Sigma|//Model[Name='CPI']//sigma
-@@NEWCPIR0@@,NewFile,//Model[Name='CPI']//StartingInflationRate|//Model[Name='CPI']//starting_inflation_rate
-@@NEWCPIALPHA@@,NewFile,//Model[Name='CPI']//MarketPriceOfRisk|//Model[Name='CPI']//market_price_of_risk
-@@NEWCPIMU@@,NewFile,//Model[Name='CPI']//MeanReversionLevel|//Model[Name='CPI']//mean_reversion_level
-@@NEWCPISIGMA@@,NewFile,//Model[Name='CPI']//Sigma|//Model[Name='CPI']//sigma
+@@OLDCPIR0@@,OldCalibFile,//Model[Name='CPI']//StartingInflationRate|//Model[Name='CPI']//starting_inflation_rate
+@@OLDCPIALPHA@@,OldCalibFile,//Model[Name='CPI']//MeanReversionStrength|//Model[Name='CPI']//mean_reversion_strength
+@@OLDCPIMU@@,OldCalibFile,//Model[Name='CPI']//MeanReversionLevel|//Model[Name='CPI']//mean_reversion_level
+@@OLDCPISIGMA@@,OldCalibFile,//Model[Name='CPI']//Sigma|//Model[Name='CPI']//sigma
+@@NEWCPIR0@@,NewCalibFile,//Model[Name='CPI']//StartingInflationRate|//Model[Name='CPI']//starting_inflation_rate
+@@NEWCPIALPHA@@,NewCalibFile,//Model[Name='CPI']//MeanReversionStrength|//Model[Name='CPI']//mean_reversion_strength
+@@NEWCPIMU@@,NewCalibFile,//Model[Name='CPI']//MeanReversionLevel|//Model[Name='CPI']//mean_reversion_level
+@@NEWCPISIGMA@@,NewCalibFile,//Model[Name='CPI']//Sigma|//Model[Name='CPI']//sigma
 @@OLDCPI1_5@@,,
 @@OLDCPI1_25@@,,
 @@OLDCPI1_50@@,,
@@ -363,14 +363,14 @@ Wildcard,File,XPATH
 @@OLDCPIHIST@@,,
 @@NEWCPIPERCENTILE@@,,
 @@NEWCPIHIST@@,,
-@@OLDAWER0@@,OldFile,//Model[Name='AWE']//StartingInflationRate|//Model[Name='AWE']//starting_inflation_rate
-@@OLDAWEALPHA@@,OldFile,//Model[Name='AWE']//MarketPriceOfRisk|//Model[Name='AWE']//market_price_of_risk
-@@OLDAWEMU@@,OldFile,//Model[Name='AWE']//MeanReversionLevel|//Model[Name='AWE']//mean_reversion_level
-@@OLDAWESIGMA@@,OldFile,//Model[Name='AWE']//Sigma|//Model[Name='AWE']//sigma
-@@NEWAWER0@@,NewFile,//Model[Name='AWE']//StartingInflationRate|//Model[Name='AWE']//starting_inflation_rate
-@@NEWAWEALPHA@@,NewFile,//Model[Name='AWE']//MarketPriceOfRisk|//Model[Name='AWE']//market_price_of_risk
-@@NEWAWEMU@@,NewFile,//Model[Name='AWE']//MeanReversionLevel|//Model[Name='AWE']//mean_reversion_level
-@@NEWAWESIGMA@@,NewFile,//Model[Name='AWE']//Sigma|//Model[Name='AWE']//sigma
+@@OLDAWER0@@,OldCalibFile,//Model[Name='AWE']//StartingInflationRate|//Model[Name='AWE']//starting_inflation_rate
+@@OLDAWEALPHA@@,OldCalibFile,//Model[Name='AWE']//MeanReversionStrength|//Model[Name='AWE']//mean_reversion_strength
+@@OLDAWEMU@@,OldCalibFile,//Model[Name='AWE']//MeanReversionLevel|//Model[Name='AWE']//mean_reversion_level
+@@OLDAWESIGMA@@,OldCalibFile,//Model[Name='AWE']//Sigma|//Model[Name='AWE']//sigma
+@@NEWAWER0@@,NewCalibFile,//Model[Name='AWE']//StartingInflationRate|//Model[Name='AWE']//starting_inflation_rate
+@@NEWAWEALPHA@@,NewCalibFile,//Model[Name='AWE']//MeanReversionStrength|//Model[Name='AWE']//mean_reversion_strength
+@@NEWAWEMU@@,NewCalibFile,//Model[Name='AWE']//MeanReversionLevel|//Model[Name='AWE']//mean_reversion_level
+@@NEWAWESIGMA@@,NewCalibFile,//Model[Name='AWE']//Sigma|//Model[Name='AWE']//sigma
 @@OLDAWE1_5@@,,
 @@OLDAWE1_25@@,,
 @@OLDAWE1_50@@,,
@@ -459,26 +459,26 @@ Wildcard,File,XPATH
 @@OLDAWEHIST@@,,
 @@NEWAWEPERCENTILE@@,,
 @@NEWAWEHIST@@,,
-@@OLDAUEQP12@@,,
-@@OLDAUEQP21@@,,
-@@OLDAUEQMU1@@,,
-@@OLDAUEQSIGMA1@@,,
-@@OLDAUEQMU2@@,,
-@@OLDAUEQSIGMA2@@,,
-@@NEWAUEQP12@@,,
-@@NEWAUEQP21@@,,
-@@NEWAUEQMU1@@,,
-@@NEWAUEQSIGMA1@@,,
-@@NEWAUEQMU2@@,,
-@@NEWAUEQSIGMA2@@,,
-@@OLDAUEQY0@@,,
-@@OLDAUEQYMU@@,,
-@@OLDAUEQYALPHA@@,,
-@@OLDAUEQYSIGMA@@,,
-@@NEWAUEQY0@@,,
-@@NEWAUEQYMU@@,,
-@@NEWAUEQYALPHA@@,,
-@@NEWAUEQYSIGMA@@,,
+@@OLDAUEQP12@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUEQP21@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUEQMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//MeanReturnState1
+@@OLDAUEQSIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//VolatilityState1
+@@OLDAUEQMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//MeanReturnState2
+@@OLDAUEQSIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//ProbabilityState1State2
+@@NEWAUEQP12@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUEQP21@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUEQMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//MeanReturnState1
+@@NEWAUEQSIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//VolatilityState1
+@@NEWAUEQMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//MeanReturnState2
+@@NEWAUEQSIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Equities']//volatility_model_id|//Model[Name='Australian Equities']//VolatilityModelId]//ProbabilityState1State2
+@@OLDAUEQY0@@,OldCalibFile,
+@@OLDAUEQYMU@@,OldCalibFile,
+@@OLDAUEQYALPHA@@,OldCalibFile,
+@@OLDAUEQYSIGMA@@,OldCalibFile,
+@@NEWAUEQY0@@,NewCalibFile,
+@@NEWAUEQYMU@@,NewCalibFile,
+@@NEWAUEQYALPHA@@,NewCalibFile,
+@@NEWAUEQYSIGMA@@,NewCalibFile,
 @@OLDAUEQ1_5@@,,
 @@OLDAUEQ1_25@@,,
 @@OLDAUEQ1_50@@,,
@@ -567,26 +567,26 @@ Wildcard,File,XPATH
 @@OLDAUEQHIST@@,,
 @@NEWAUEQPERCENTILE@@,,
 @@NEWAUEQHIST@@,,
-@@OLDINTEQP12@@,,
-@@OLDINTEQP21@@,,
-@@OLDINTEQMU1@@,,
-@@OLDINTEQSIGMA1@@,,
-@@OLDINTEQMU2@@,,
-@@OLDINTEQSIGMA2@@,,
-@@NEWINTEQP12@@,,
-@@NEWINTEQP21@@,,
-@@NEWINTEQMU1@@,,
-@@NEWINTEQSIGMA1@@,,
-@@NEWINTEQMU2@@,,
-@@NEWINTEQSIGMA2@@,,
-@@OLDINTEQY0@@,,
-@@OLDINTEQYMU@@,,
-@@OLDINTEQYALPHA@@,,
-@@OLDINTEQYSIGMA@@,,
-@@NEWINTEQY0@@,,
-@@NEWINTEQYMU@@,,
-@@NEWINTEQYALPHA@@,,
-@@NEWINTEQYSIGMA@@,,
+@@OLDINTEQP12@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//ProbabilityState2State1
+@@OLDINTEQP21@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//ProbabilityState2State1
+@@OLDINTEQMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//MeanReturnState1
+@@OLDINTEQSIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//VolatilityState1
+@@OLDINTEQMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//MeanReturnState2
+@@OLDINTEQSIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//ProbabilityState1State2
+@@NEWINTEQP12@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//ProbabilityState2State1
+@@NEWINTEQP21@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//ProbabilityState2State1
+@@NEWINTEQMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//MeanReturnState1
+@@NEWINTEQSIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//VolatilityState1
+@@NEWINTEQMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//MeanReturnState2
+@@NEWINTEQSIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='International Large Cap EquitiesHedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesHedge']//VolatilityModelId]//ProbabilityState1State2
+@@OLDINTEQY0@@,OldCalibFile,
+@@OLDINTEQYMU@@,OldCalibFile,
+@@OLDINTEQYALPHA@@,OldCalibFile,
+@@OLDINTEQYSIGMA@@,OldCalibFile,
+@@NEWINTEQY0@@,NewCalibFile,
+@@NEWINTEQYMU@@,NewCalibFile,
+@@NEWINTEQYALPHA@@,NewCalibFile,
+@@NEWINTEQYSIGMA@@,NewCalibFile,
 @@OLDINTEQ1_5@@,,
 @@OLDINTEQ1_25@@,,
 @@OLDINTEQ1_50@@,,
@@ -672,137 +672,137 @@ Wildcard,File,XPATH
 @@NEWINTEQ30_MU@@,,
 @@NEWINTEQ30_VOL@@,,
 @@OLDINTEQPERCENTILE@@,,
-@@OLDINTEQHIST@@,,
+@@OLDINTEQUNHIST@@,,
 @@NEWINTEQPERCENTILE@@,,
-@@NEWINTEQHIST@@,,
-@@OLDINTEQHP12@@,,
-@@OLDINTEQHP21@@,,
-@@OLDINTEQHMU1@@,,
-@@OLDINTEQHSIGMA1@@,,
-@@OLDINTEQHMU2@@,,
-@@OLDINTEQHSIGMA2@@,,
-@@NEWINTEQHP12@@,,
-@@NEWINTEQHP21@@,,
-@@NEWINTEQHMU1@@,,
-@@NEWINTEQHSIGMA1@@,,
-@@NEWINTEQHMU2@@,,
-@@NEWINTEQHSIGMA2@@,,
-@@OLDINTEQHY0@@,,
-@@OLDINTEQHYMU@@,,
-@@OLDINTEQHYALPHA@@,,
-@@OLDINTEQHYSIGMA@@,,
-@@NEWINTEQHY0@@,,
-@@NEWINTEQHYMU@@,,
-@@NEWINTEQHYALPHA@@,,
-@@NEWINTEQHYSIGMA@@,,
-@@OLDINTEQH1_5@@,,
-@@OLDINTEQH1_25@@,,
-@@OLDINTEQH1_50@@,,
-@@OLDINTEQH1_75@@,,
-@@OLDINTEQH1_95@@,,
-@@OLDINTEQH1_MU@@,,
-@@OLDINTEQH1_VOL@@,,
-@@OLDINTEQH5_5@@,,
-@@OLDINTEQH5_25@@,,
-@@OLDINTEQH5_50@@,,
-@@OLDINTEQH5_75@@,,
-@@OLDINTEQH5_95@@,,
-@@OLDINTEQH5_MU@@,,
-@@OLDINTEQH5_VOL@@,,
-@@OLDINTEQH10_5@@,,
-@@OLDINTEQH10_25@@,,
-@@OLDINTEQH10_50@@,,
-@@OLDINTEQH10_75@@,,
-@@OLDINTEQH10_95@@,,
-@@OLDINTEQH10_MU@@,,
-@@OLDINTEQH10_VOL@@,,
-@@OLDINTEQH15_5@@,,
-@@OLDINTEQH15_25@@,,
-@@OLDINTEQH15_50@@,,
-@@OLDINTEQH15_75@@,,
-@@OLDINTEQH15_95@@,,
-@@OLDINTEQH15_MU@@,,
-@@OLDINTEQH15_VOL@@,,
-@@OLDINTEQH25_5@@,,
-@@OLDINTEQH25_25@@,,
-@@OLDINTEQH25_50@@,,
-@@OLDINTEQH25_75@@,,
-@@OLDINTEQH25_95@@,,
-@@OLDINTEQH25_MU@@,,
-@@OLDINTEQH25_VOL@@,,
-@@OLDINTEQH30_5@@,,
-@@OLDINTEQH30_25@@,,
-@@OLDINTEQH30_50@@,,
-@@OLDINTEQH30_75@@,,
-@@OLDINTEQH30_95@@,,
-@@OLDINTEQH30_MU@@,,
-@@OLDINTEQH30_VOL@@,,
-@@NEWINTEQH1_5@@,,
-@@NEWINTEQH1_25@@,,
-@@NEWINTEQH1_50@@,,
-@@NEWINTEQH1_75@@,,
-@@NEWINTEQH1_95@@,,
-@@NEWINTEQH1_MU@@,,
-@@NEWINTEQH1_VOL@@,,
-@@NEWINTEQH5_5@@,,
-@@NEWINTEQH5_25@@,,
-@@NEWINTEQH5_50@@,,
-@@NEWINTEQH5_75@@,,
-@@NEWINTEQH5_95@@,,
-@@NEWINTEQH5_MU@@,,
-@@NEWINTEQH5_VOL@@,,
-@@NEWINTEQH10_5@@,,
-@@NEWINTEQH10_25@@,,
-@@NEWINTEQH10_50@@,,
-@@NEWINTEQH10_75@@,,
-@@NEWINTEQH10_95@@,,
-@@NEWINTEQH10_MU@@,,
-@@NEWINTEQH10_VOL@@,,
-@@NEWINTEQH15_5@@,,
-@@NEWINTEQH15_25@@,,
-@@NEWINTEQH15_50@@,,
-@@NEWINTEQH15_75@@,,
-@@NEWINTEQH15_95@@,,
-@@NEWINTEQH15_MU@@,,
-@@NEWINTEQH15_VOL@@,,
-@@NEWINTEQH25_5@@,,
-@@NEWINTEQH25_25@@,,
-@@NEWINTEQH25_50@@,,
-@@NEWINTEQH25_75@@,,
-@@NEWINTEQH25_95@@,,
-@@NEWINTEQH25_MU@@,,
-@@NEWINTEQH25_VOL@@,,
-@@NEWINTEQH30_5@@,,
-@@NEWINTEQH30_25@@,,
-@@NEWINTEQH30_50@@,,
-@@NEWINTEQH30_75@@,,
-@@NEWINTEQH30_95@@,,
-@@NEWINTEQH30_MU@@,,
-@@NEWINTEQH30_VOL@@,,
-@@OLDINTEQHPERCENTILE@@,,
-@@OLDINTEQHHIST@@,,
-@@NEWINTEQHPERCENTILE@@,,
-@@NEWINTEQHHIST@@,,
-@@OLDEMEQP12@@,,
-@@OLDEMEQP21@@,,
-@@OLDEMEQMU1@@,,
-@@OLDEMEQSIGMA1@@,,
-@@OLDEMEQMU2@@,,
-@@OLDEMEQSIGMA2@@,,
-@@NEWEMEQP12@@,,
-@@NEWEMEQP21@@,,
-@@NEWEMEQMU1@@,,
-@@NEWEMEQSIGMA1@@,,
-@@NEWEMEQMU2@@,,
-@@NEWEMEQSIGMA2@@,,
-@@OLDEMEQY0@@,,
-@@OLDEMEQYMU@@,,
-@@OLDEMEQYALPHA@@,,
-@@OLDEMEQYSIGMA@@,,
-@@NEWEMEQY0@@,,
-@@NEWEMEQYMU@@,,
-@@NEWEMEQYALPHA@@,,
-@@NEWEMEQYSIGMA@@,,
+@@NEWINTEQUNHIST@@,,
+@@OLDINTEQUNHP12@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//ProbabilityState2State1
+@@OLDINTEQUNHP21@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//ProbabilityState2State1
+@@OLDINTEQUNHMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//MeanReturnState1
+@@OLDINTEQUNHSIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//VolatilityState1
+@@OLDINTEQUNHMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//MeanReturnState2
+@@OLDINTEQUNHSIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//ProbabilityState1State2
+@@NEWINTEQUNHP12@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//ProbabilityState2State1
+@@NEWINTEQUNHP21@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//ProbabilityState2State1
+@@NEWINTEQUNHMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//MeanReturnState1
+@@NEWINTEQUNHSIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//VolatilityState1
+@@NEWINTEQUNHMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//MeanReturnState2
+@@NEWINTEQUNHSIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='International Large Cap EquitiesUnhedge']//volatility_model_id|//Model[Name='International Large Cap EquitiesUnhedge']//VolatilityModelId]//ProbabilityState1State2
+@@OLDINTEQUNHY0@@,OldCalibFile,
+@@OLDINTEQUNHYMU@@,OldCalibFile,
+@@OLDINTEQUNHYALPHA@@,OldCalibFile,
+@@OLDINTEQUNHYSIGMA@@,OldCalibFile,
+@@NEWINTEQUNHY0@@,NewCalibFile,
+@@NEWINTEQUNHYMU@@,NewCalibFile,
+@@NEWINTEQUNHYALPHA@@,NewCalibFile,
+@@NEWINTEQUNHYSIGMA@@,NewCalibFile,
+@@OLDINTEQUNH1_5@@,,
+@@OLDINTEQUNH1_25@@,,
+@@OLDINTEQUNH1_50@@,,
+@@OLDINTEQUNH1_75@@,,
+@@OLDINTEQUNH1_95@@,,
+@@OLDINTEQUNH1_MU@@,,
+@@OLDINTEQUNH1_VOL@@,,
+@@OLDINTEQUNH5_5@@,,
+@@OLDINTEQUNH5_25@@,,
+@@OLDINTEQUNH5_50@@,,
+@@OLDINTEQUNH5_75@@,,
+@@OLDINTEQUNH5_95@@,,
+@@OLDINTEQUNH5_MU@@,,
+@@OLDINTEQUNH5_VOL@@,,
+@@OLDINTEQUNH10_5@@,,
+@@OLDINTEQUNH10_25@@,,
+@@OLDINTEQUNH10_50@@,,
+@@OLDINTEQUNH10_75@@,,
+@@OLDINTEQUNH10_95@@,,
+@@OLDINTEQUNH10_MU@@,,
+@@OLDINTEQUNH10_VOL@@,,
+@@OLDINTEQUNH15_5@@,,
+@@OLDINTEQUNH15_25@@,,
+@@OLDINTEQUNH15_50@@,,
+@@OLDINTEQUNH15_75@@,,
+@@OLDINTEQUNH15_95@@,,
+@@OLDINTEQUNH15_MU@@,,
+@@OLDINTEQUNH15_VOL@@,,
+@@OLDINTEQUNH25_5@@,,
+@@OLDINTEQUNH25_25@@,,
+@@OLDINTEQUNH25_50@@,,
+@@OLDINTEQUNH25_75@@,,
+@@OLDINTEQUNH25_95@@,,
+@@OLDINTEQUNH25_MU@@,,
+@@OLDINTEQUNH25_VOL@@,,
+@@OLDINTEQUNH30_5@@,,
+@@OLDINTEQUNH30_25@@,,
+@@OLDINTEQUNH30_50@@,,
+@@OLDINTEQUNH30_75@@,,
+@@OLDINTEQUNH30_95@@,,
+@@OLDINTEQUNH30_MU@@,,
+@@OLDINTEQUNH30_VOL@@,,
+@@NEWINTEQUNH1_5@@,,
+@@NEWINTEQUNH1_25@@,,
+@@NEWINTEQUNH1_50@@,,
+@@NEWINTEQUNH1_75@@,,
+@@NEWINTEQUNH1_95@@,,
+@@NEWINTEQUNH1_MU@@,,
+@@NEWINTEQUNH1_VOL@@,,
+@@NEWINTEQUNH5_5@@,,
+@@NEWINTEQUNH5_25@@,,
+@@NEWINTEQUNH5_50@@,,
+@@NEWINTEQUNH5_75@@,,
+@@NEWINTEQUNH5_95@@,,
+@@NEWINTEQUNH5_MU@@,,
+@@NEWINTEQUNH5_VOL@@,,
+@@NEWINTEQUNH10_5@@,,
+@@NEWINTEQUNH10_25@@,,
+@@NEWINTEQUNH10_50@@,,
+@@NEWINTEQUNH10_75@@,,
+@@NEWINTEQUNH10_95@@,,
+@@NEWINTEQUNH10_MU@@,,
+@@NEWINTEQUNH10_VOL@@,,
+@@NEWINTEQUNH15_5@@,,
+@@NEWINTEQUNH15_25@@,,
+@@NEWINTEQUNH15_50@@,,
+@@NEWINTEQUNH15_75@@,,
+@@NEWINTEQUNH15_95@@,,
+@@NEWINTEQUNH15_MU@@,,
+@@NEWINTEQUNH15_VOL@@,,
+@@NEWINTEQUNH25_5@@,,
+@@NEWINTEQUNH25_25@@,,
+@@NEWINTEQUNH25_50@@,,
+@@NEWINTEQUNH25_75@@,,
+@@NEWINTEQUNH25_95@@,,
+@@NEWINTEQUNH25_MU@@,,
+@@NEWINTEQUNH25_VOL@@,,
+@@NEWINTEQUNH30_5@@,,
+@@NEWINTEQUNH30_25@@,,
+@@NEWINTEQUNH30_50@@,,
+@@NEWINTEQUNH30_75@@,,
+@@NEWINTEQUNH30_95@@,,
+@@NEWINTEQUNH30_MU@@,,
+@@NEWINTEQUNH30_VOL@@,,
+@@OLDINTEQUNHPERCENTILE@@,,
+@@OLDINTEQUNHHIST@@,,
+@@NEWINTEQUNHPERCENTILE@@,,
+@@NEWINTEQUNHHIST@@,,
+@@OLDEMEQP12@@,OldCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//ProbabilityState2State1
+@@OLDEMEQP21@@,OldCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//ProbabilityState2State1
+@@OLDEMEQMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//MeanReturnState1
+@@OLDEMEQSIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//VolatilityState1
+@@OLDEMEQMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//MeanReturnState2
+@@OLDEMEQSIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//ProbabilityState1State2
+@@NEWEMEQP12@@,NewCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//ProbabilityState2State1
+@@NEWEMEQP21@@,NewCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//ProbabilityState2State1
+@@NEWEMEQMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//MeanReturnState1
+@@NEWEMEQSIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//VolatilityState1
+@@NEWEMEQMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//MeanReturnState2
+@@NEWEMEQSIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Emerging Market Equities']//volatility_model_id|//Model[Name='Emerging Market Equities']//VolatilityModelId]//ProbabilityState1State2
+@@OLDEMEQY0@@,OldCalibFile,
+@@OLDEMEQYMU@@,OldCalibFile,
+@@OLDEMEQYALPHA@@,OldCalibFile,
+@@OLDEMEQYSIGMA@@,OldCalibFile,
+@@NEWEMEQY0@@,NewCalibFile,
+@@NEWEMEQYMU@@,NewCalibFile,
+@@NEWEMEQYALPHA@@,NewCalibFile,
+@@NEWEMEQYSIGMA@@,NewCalibFile,
 @@OLDEMEQ1_5@@,,
 @@OLDEMEQ1_25@@,,
 @@OLDEMEQ1_50@@,,
@@ -891,26 +891,26 @@ Wildcard,File,XPATH
 @@OLDEMEQHIST@@,,
 @@NEWEMEQPERCENTILE@@,,
 @@NEWEMEQHIST@@,,
-@@OLDAUFIP12@@,,
-@@OLDAUFIP21@@,,
-@@OLDAUFIMU1@@,,
-@@OLDAUFISIGMA1@@,,
-@@OLDAUFIMU2@@,,
-@@OLDAUFISIGMA2@@,,
-@@NEWAUFIP12@@,,
-@@NEWAUFIP21@@,,
-@@NEWAUFIMU1@@,,
-@@NEWAUFISIGMA1@@,,
-@@NEWAUFIMU2@@,,
-@@NEWAUFISIGMA2@@,,
-@@OLDAUFIY0@@,,
-@@OLDAUFIYMU@@,,
-@@OLDAUFIYALPHA@@,,
-@@OLDAUFIYSIGMA@@,,
-@@NEWAUFIY0@@,,
-@@NEWAUFIYMU@@,,
-@@NEWAUFIYALPHA@@,,
-@@NEWAUFIYSIGMA@@,,
+@@OLDAUFIP12@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUFIP21@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUFIMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//MeanReturnState1
+@@OLDAUFISIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//VolatilityState1
+@@OLDAUFIMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//MeanReturnState2
+@@OLDAUFISIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState1State2
+@@NEWAUFIP12@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUFIP21@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUFIMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//MeanReturnState1
+@@NEWAUFISIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//VolatilityState1
+@@NEWAUFIMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//MeanReturnState2
+@@NEWAUFISIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='Australian Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState1State2
+@@OLDAUFIY0@@,OldCalibFile,
+@@OLDAUFIYMU@@,OldCalibFile,
+@@OLDAUFIYALPHA@@,OldCalibFile,
+@@OLDAUFIYSIGMA@@,OldCalibFile,
+@@NEWAUFIY0@@,NewCalibFile,
+@@NEWAUFIYMU@@,NewCalibFile,
+@@NEWAUFIYALPHA@@,NewCalibFile,
+@@NEWAUFIYSIGMA@@,NewCalibFile,
 @@OLDAUFI1_5@@,,
 @@OLDAUFI1_25@@,,
 @@OLDAUFI1_50@@,,
@@ -999,26 +999,26 @@ Wildcard,File,XPATH
 @@OLDAUFIHIST@@,,
 @@NEWAUFIPERCENTILE@@,,
 @@NEWAUFIHIST@@,,
-@@OLDAUFICP12@@,,
-@@OLDAUFICP21@@,,
-@@OLDAUFICMU1@@,,
-@@OLDAUFICSIGMA1@@,,
-@@OLDAUFICMU2@@,,
-@@OLDAUFICSIGMA2@@,,
-@@NEWAUFICP12@@,,
-@@NEWAUFICP21@@,,
-@@NEWAUFICMU1@@,,
-@@NEWAUFICSIGMA1@@,,
-@@NEWAUFICMU2@@,,
-@@NEWAUFICSIGMA2@@,,
-@@OLDAUFICY0@@,,
-@@OLDAUFICYMU@@,,
-@@OLDAUFICYALPHA@@,,
-@@OLDAUFICYSIGMA@@,,
-@@NEWAUFICY0@@,,
-@@NEWAUFICYMU@@,,
-@@NEWAUFICYALPHA@@,,
-@@NEWAUFICYSIGMA@@,,
+@@OLDAUFICP12@@,OldCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUFICP21@@,OldCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUFICMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//MeanReturnState1
+@@OLDAUFICSIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//VolatilityState1
+@@OLDAUFICMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//MeanReturnState2
+@@OLDAUFICSIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//ProbabilityState1State2
+@@NEWAUFICP12@@,NewCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUFICP21@@,NewCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUFICMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//MeanReturnState1
+@@NEWAUFICSIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//VolatilityState1
+@@NEWAUFICMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//MeanReturnState2
+@@NEWAUFICSIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='AustralianCorporateBonds']//volatility_model_id|//Model[Name='AustralianCorporateBonds']//VolatilityModelId]//ProbabilityState1State2
+@@OLDAUFICY0@@,OldCalibFile,
+@@OLDAUFICYMU@@,OldCalibFile,
+@@OLDAUFICYALPHA@@,OldCalibFile,
+@@OLDAUFICYSIGMA@@,OldCalibFile,
+@@NEWAUFICY0@@,NewCalibFile,
+@@NEWAUFICYMU@@,NewCalibFile,
+@@NEWAUFICYALPHA@@,NewCalibFile,
+@@NEWAUFICYSIGMA@@,NewCalibFile,
 @@OLDAUFIC1_5@@,,
 @@OLDAUFIC1_25@@,,
 @@OLDAUFIC1_50@@,,
@@ -1107,26 +1107,26 @@ Wildcard,File,XPATH
 @@OLDAUFICHIST@@,,
 @@NEWAUFICPERCENTILE@@,,
 @@NEWAUFICHIST@@,,
-@@OLDINTFIP12@@,,
-@@OLDINTFIP21@@,,
-@@OLDINTFIMU1@@,,
-@@OLDINTFISIGMA1@@,,
-@@OLDINTFIMU2@@,,
-@@OLDINTFISIGMA2@@,,
-@@NEWINTFIP12@@,,
-@@NEWINTFIP21@@,,
-@@NEWINTFIMU1@@,,
-@@NEWINTFISIGMA1@@,,
-@@NEWINTFIMU2@@,,
-@@NEWINTFISIGMA2@@,,
-@@OLDINTFIY0@@,,
-@@OLDINTFIYMU@@,,
-@@OLDINTFIYALPHA@@,,
-@@OLDINTFIYSIGMA@@,,
-@@NEWINTFIY0@@,,
-@@NEWINTFIYMU@@,,
-@@NEWINTFIYALPHA@@,,
-@@NEWINTFIYSIGMA@@,,
+@@OLDINTFIP12@@,OldCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState2State1
+@@OLDINTFIP21@@,OldCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState2State1
+@@OLDINTFIMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//MeanReturnState1
+@@OLDINTFISIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//VolatilityState1
+@@OLDINTFIMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//MeanReturnState2
+@@OLDINTFISIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState1State2
+@@NEWINTFIP12@@,NewCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState2State1
+@@NEWINTFIP21@@,NewCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState2State1
+@@NEWINTFIMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//MeanReturnState1
+@@NEWINTFISIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//VolatilityState1
+@@NEWINTFIMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//MeanReturnState2
+@@NEWINTFISIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='International Fixed Interest Government Bonds']//volatility_model_id|//Model[Name='International Fixed Interest Government Bonds']//VolatilityModelId]//ProbabilityState1State2
+@@OLDINTFIY0@@,OldCalibFile,
+@@OLDINTFIYMU@@,OldCalibFile,
+@@OLDINTFIYALPHA@@,OldCalibFile,
+@@OLDINTFIYSIGMA@@,OldCalibFile,
+@@NEWINTFIY0@@,NewCalibFile,
+@@NEWINTFIYMU@@,NewCalibFile,
+@@NEWINTFIYALPHA@@,NewCalibFile,
+@@NEWINTFIYSIGMA@@,NewCalibFile,
 @@OLDINTFI1_5@@,,
 @@OLDINTFI1_25@@,,
 @@OLDINTFI1_50@@,,
@@ -1215,26 +1215,26 @@ Wildcard,File,XPATH
 @@OLDINTFIHIST@@,,
 @@NEWINTFIPERCENTILE@@,,
 @@NEWINTFIHIST@@,,
-@@OLDAUPP12@@,,
-@@OLDAUPP21@@,,
-@@OLDAUPMU1@@,,
-@@OLDAUPSIGMA1@@,,
-@@OLDAUPMU2@@,,
-@@OLDAUPSIGMA2@@,,
-@@NEWAUPP12@@,,
-@@NEWAUPP21@@,,
-@@NEWAUPMU1@@,,
-@@NEWAUPSIGMA1@@,,
-@@NEWAUPMU2@@,,
-@@NEWAUPSIGMA2@@,,
-@@OLDAUPY0@@,,
-@@OLDAUPYMU@@,,
-@@OLDAUPYALPHA@@,,
-@@OLDAUPYSIGMA@@,,
-@@NEWAUPY0@@,,
-@@NEWAUPYMU@@,,
-@@NEWAUPYALPHA@@,,
-@@NEWAUPYSIGMA@@,,
+@@OLDAUPP12@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUPP21@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUPMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//MeanReturnState1
+@@OLDAUPSIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//VolatilityState1
+@@OLDAUPMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//MeanReturnState2
+@@OLDAUPSIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//ProbabilityState1State2
+@@NEWAUPP12@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUPP21@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUPMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//MeanReturnState1
+@@NEWAUPSIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//VolatilityState1
+@@NEWAUPMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//MeanReturnState2
+@@NEWAUPSIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Listed Property']//volatility_model_id|//Model[Name='Australian Listed Property']//VolatilityModelId]//ProbabilityState1State2
+@@OLDAUPY0@@,OldCalibFile,
+@@OLDAUPYMU@@,OldCalibFile,
+@@OLDAUPYALPHA@@,OldCalibFile,
+@@OLDAUPYSIGMA@@,OldCalibFile,
+@@NEWAUPY0@@,NewCalibFile,
+@@NEWAUPYMU@@,NewCalibFile,
+@@NEWAUPYALPHA@@,NewCalibFile,
+@@NEWAUPYSIGMA@@,NewCalibFile,
 @@OLDAUP1_5@@,,
 @@OLDAUP1_25@@,,
 @@OLDAUP1_50@@,,
@@ -1323,26 +1323,26 @@ Wildcard,File,XPATH
 @@OLDAUPHIST@@,,
 @@NEWAUPPERCENTILE@@,,
 @@NEWAUPHIST@@,,
-@@OLDAUDPP12@@,,
-@@OLDAUDPP21@@,,
-@@OLDAUDPMU1@@,,
-@@OLDAUDPSIGMA1@@,,
-@@OLDAUDPMU2@@,,
-@@OLDAUDPSIGMA2@@,,
-@@NEWAUDPP12@@,,
-@@NEWAUDPP21@@,,
-@@NEWAUDPMU1@@,,
-@@NEWAUDPSIGMA1@@,,
-@@NEWAUDPMU2@@,,
-@@NEWAUDPSIGMA2@@,,
-@@OLDAUDPY0@@,,
-@@OLDAUDPYMU@@,,
-@@OLDAUDPYALPHA@@,,
-@@OLDAUDPYSIGMA@@,,
-@@NEWAUDPY0@@,,
-@@NEWAUDPYMU@@,,
-@@NEWAUDPYALPHA@@,,
-@@NEWAUDPYSIGMA@@,,
+@@OLDAUDPP12@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUDPP21@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUDPMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//MeanReturnState1
+@@OLDAUDPSIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//VolatilityState1
+@@OLDAUDPMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//MeanReturnState2
+@@OLDAUDPSIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//ProbabilityState1State2
+@@NEWAUDPP12@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUDPP21@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUDPMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//MeanReturnState1
+@@NEWAUDPSIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//VolatilityState1
+@@NEWAUDPMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//MeanReturnState2
+@@NEWAUDPSIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Direct Property']//volatility_model_id|//Model[Name='Australian Direct Property']//VolatilityModelId]//ProbabilityState1State2
+@@OLDAUDPY0@@,OldCalibFile,
+@@OLDAUDPYMU@@,OldCalibFile,
+@@OLDAUDPYALPHA@@,OldCalibFile,
+@@OLDAUDPYSIGMA@@,OldCalibFile,
+@@NEWAUDPY0@@,NewCalibFile,
+@@NEWAUDPYMU@@,NewCalibFile,
+@@NEWAUDPYALPHA@@,NewCalibFile,
+@@NEWAUDPYSIGMA@@,NewCalibFile,
 @@OLDAUDP1_5@@,,
 @@OLDAUDP1_25@@,,
 @@OLDAUDP1_50@@,,
@@ -1431,26 +1431,26 @@ Wildcard,File,XPATH
 @@OLDAUDPHIST@@,,
 @@NEWAUDPPERCENTILE@@,,
 @@NEWAUDPHIST@@,,
-@@OLDINTAHP12@@,,
-@@OLDINTAHP21@@,,
-@@OLDINTAHMU1@@,,
-@@OLDINTAHSIGMA1@@,,
-@@OLDINTAHMU2@@,,
-@@OLDINTAHSIGMA2@@,,
-@@NEWINTAHP12@@,,
-@@NEWINTAHP21@@,,
-@@NEWINTAHMU1@@,,
-@@NEWINTAHSIGMA1@@,,
-@@NEWINTAHMU2@@,,
-@@NEWINTAHSIGMA2@@,,
-@@OLDINTAHY0@@,,
-@@OLDINTAHYMU@@,,
-@@OLDINTAHYALPHA@@,,
-@@OLDINTAHYSIGMA@@,,
-@@NEWINTAHY0@@,,
-@@NEWINTAHYMU@@,,
-@@NEWINTAHYALPHA@@,,
-@@NEWINTAHYSIGMA@@,,
+@@OLDINTAHP12@@,OldCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//ProbabilityState2State1
+@@OLDINTAHP21@@,OldCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//ProbabilityState2State1
+@@OLDINTAHMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//MeanReturnState1
+@@OLDINTAHSIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//VolatilityState1
+@@OLDINTAHMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//MeanReturnState2
+@@OLDINTAHSIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//ProbabilityState1State2
+@@NEWINTAHP12@@,NewCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//ProbabilityState2State1
+@@NEWINTAHP21@@,NewCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//ProbabilityState2State1
+@@NEWINTAHMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//MeanReturnState1
+@@NEWINTAHSIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//VolatilityState1
+@@NEWINTAHMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//MeanReturnState2
+@@NEWINTAHSIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='International Alternatives']//volatility_model_id|//Model[Name='International Alternatives']//VolatilityModelId]//ProbabilityState1State2
+@@OLDINTAHY0@@,OldCalibFile,
+@@OLDINTAHYMU@@,OldCalibFile,
+@@OLDINTAHYALPHA@@,OldCalibFile,
+@@OLDINTAHYSIGMA@@,OldCalibFile,
+@@NEWINTAHY0@@,NewCalibFile,
+@@NEWINTAHYMU@@,NewCalibFile,
+@@NEWINTAHYALPHA@@,NewCalibFile,
+@@NEWINTAHYSIGMA@@,NewCalibFile,
 @@OLDINTAH1_5@@,,
 @@OLDINTAH1_25@@,,
 @@OLDINTAH1_50@@,,
@@ -1539,26 +1539,26 @@ Wildcard,File,XPATH
 @@OLDINTAHHIST@@,,
 @@NEWINTAHPERCENTILE@@,,
 @@NEWINTAHHIST@@,,
-@@OLDAUIP12@@,,
-@@OLDAUIP21@@,,
-@@OLDAUIMU1@@,,
-@@OLDAUISIGMA1@@,,
-@@OLDAUIMU2@@,,
-@@OLDAUISIGMA2@@,,
-@@NEWAUIP12@@,,
-@@NEWAUIP21@@,,
-@@NEWAUIMU1@@,,
-@@NEWAUISIGMA1@@,,
-@@NEWAUIMU2@@,,
-@@NEWAUISIGMA2@@,,
-@@OLDAUIY0@@,,
-@@OLDAUIYMU@@,,
-@@OLDAUIYALPHA@@,,
-@@OLDAUIYSIGMA@@,,
-@@NEWAUIY0@@,,
-@@NEWAUIYMU@@,,
-@@NEWAUIYALPHA@@,,
-@@NEWAUIYSIGMA@@,,
+@@OLDAUIP12@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUIP21@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//ProbabilityState2State1
+@@OLDAUIMU1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//MeanReturnState1
+@@OLDAUISIGMA1@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//VolatilityState1
+@@OLDAUIMU2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//MeanReturnState2
+@@OLDAUISIGMA2@@,OldCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//ProbabilityState1State2
+@@NEWAUIP12@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUIP21@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//probability_state2_state1|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//ProbabilityState2State1
+@@NEWAUIMU1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//mean_return_state1|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//MeanReturnState1
+@@NEWAUISIGMA1@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//volatility_state1|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//VolatilityState1
+@@NEWAUIMU2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//mean_return_state2|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//MeanReturnState2
+@@NEWAUISIGMA2@@,NewCalibFile,//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//probability_state1_state2|//Model[ModelID=//Model[Name='Australian Infrastructure']//volatility_model_id|//Model[Name='Australian Infrastructure']//VolatilityModelId]//ProbabilityState1State2
+@@OLDAUIY0@@,OldCalibFile,
+@@OLDAUIYMU@@,OldCalibFile,
+@@OLDAUIYALPHA@@,OldCalibFile,
+@@OLDAUIYSIGMA@@,OldCalibFile,
+@@NEWAUIY0@@,NewCalibFile,
+@@NEWAUIYMU@@,NewCalibFile,
+@@NEWAUIYALPHA@@,NewCalibFile,
+@@NEWAUIYSIGMA@@,NewCalibFile,
 @@OLDAUI1_5@@,,
 @@OLDAUI1_25@@,,
 @@OLDAUI1_50@@,,
