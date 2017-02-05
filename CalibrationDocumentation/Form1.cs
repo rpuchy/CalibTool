@@ -14,6 +14,7 @@ using DocumentFormat.OpenXml.Packaging;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.XPath;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CalibrationDocumentation
 {
@@ -101,22 +102,49 @@ namespace CalibrationDocumentation
 
                 foreach (var item in Mappings)
                 {
-                    XmlDocument fileToUse;
-                    if (item.Value.File != "" && item.Value.xPath != "")
+                    if (item.Value.File == "OldCalibFile" || item.Value.File == "NewCalibFile")
                     {
-                        if (item.Value.File == "OldFile")
+                        XmlDocument fileToUse;
+                        if (item.Value.File != "" && item.Value.xPath != "")
                         {
-                            fileToUse = OldCalibXml;
-                        }
-                        else
-                        {
-                            fileToUse = NewCalibXml;
-                        }
-                        XmlNode temp = fileToUse.SelectSingleNode(item.Value.xPath);
+                            if (item.Value.File == "OldCalibFile")
+                            {
+                                fileToUse = OldCalibXml;
+                            }
+                            else
+                            {
+                                fileToUse = NewCalibXml;
+                            }
+                            XmlNode temp = fileToUse.SelectSingleNode(item.Value.xPath);
 
-                        item.Value.Value = temp?.InnerText;
+                            item.Value.Value = temp?.InnerText;
+                        }
                     }
+                    if (item.Value.File == "OldOutputChartFile" || item.Value.File == "NewOutputChartFile")
+                    {
 
+                        Excel.Application xlApp = new Excel.Application();
+                        Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"c:\test\sandbox_test2.xlsx");
+                        Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+
+                        var y = xlWorkbook.Names.Item("MyData").RefersToRange.Value;
+
+
+                        Excel.ChartObject chartObject2 = (Excel.ChartObject)xlWorksheet.ChartObjects("mychart");
+
+
+                        chartObject2.Chart.ChartArea.Copy();
+        
+                        Console.WriteLine(y);
+                        xlWorkbook.Close();
+                        xlApp.Quit();
+
+                    }
+                    if (item.Value.File == "OldOutputFile" || item.Value.File == "NewOutputFile")
+                    {
+
+
+                    }
 
                 }
                 //find all text encapsulated by @@ signs
