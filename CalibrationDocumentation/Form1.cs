@@ -113,17 +113,38 @@ namespace CalibrationDocumentation
                             fileToUse = NewCalibXml;
                         }
                         XmlNode temp = fileToUse.SelectSingleNode(item.Value.xPath);
-                        if (temp != null)
-                        {
-                            string val = temp.InnerText;
-                            Regex regexText = new Regex(Convert(item.Key));
-                             
-                            Match m = regexText.Match(docText);
-                            docText = regexText.Replace(docText, val);
-                        }
+
+                        item.Value.Value = temp?.InnerText;
                     }
 
+
                 }
+                //find all text encapsulated by @@ signs
+                Regex regexText = new Regex("@@(.*?)@@");
+
+                Match m = regexText.Match(docText);
+
+                Regex angleBrackets = new Regex("<(.*?)>");
+
+                string clean;
+                DataMap val;
+                while (m.Success)
+                {
+                    regexText = new Regex(m.Value);
+                    clean = angleBrackets.Replace(m.Value, "");
+                    if (Mappings.TryGetValue(clean,out val))
+                    {
+                        if (val.Value != null)
+                        {
+                            docText = regexText.Replace(docText, val.Value);
+                        }
+                    }
+                    m = m.NextMatch();
+                }
+
+                
+                //docText = regexText.Replace(docText, val);
+                
                 using (StreamWriter sw = new StreamWriter(template.MainDocumentPart.GetStream(FileMode.Create)))
                 {
                     sw.Write(docText);
@@ -133,17 +154,7 @@ namespace CalibrationDocumentation
             // Run Word to open the document:
             System.Diagnostics.Process.Start(path);
         }
-
-        private string Convert(string input)
-        {
-            string temp = input;
-            Regex lAngle = new Regex("<");
-            temp = lAngle.Replace(temp, "&lt;");
-            Regex rAngle = new Regex(">");
-            temp = rAngle.Replace(temp, "&gt;");
-            return temp;
-        }
-
+        
         private void button3_Click(object sender, EventArgs e)
         {
             Stream myStream = null;

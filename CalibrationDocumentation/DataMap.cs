@@ -16,6 +16,8 @@ namespace CalibrationDocumentation
 
         public string File { get; set; }
         public string xPath { get; set; }
-
+        public string Value { get; set; }
     }
+
+    
 }
