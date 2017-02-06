@@ -297,16 +297,11 @@ namespace CalibrationDocumentation
                 exitCode = proc.ExitCode;
             }
 
-
-
-
             Excel.Application xlApp = new Excel.Application();
             xlApp.DisplayAlerts = false;
             string xlLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
-
             Excel.Workbook xlOldCalib = xlApp.Workbooks.Open(OldCalib);
-
             Excel.Range srcrange;
             Excel.Range dstrange;
             Excel.Worksheet dstworkSheet = xlWorkbook.Worksheets.get_Item("OldCalib");
