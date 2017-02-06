@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -99,6 +100,10 @@ namespace CalibrationDocumentation
                 XmlDocument NewCalibXml = new XmlDocument();
                 OldCalibXml.Load(OldCalibFile.Text);
                 NewCalibXml.Load(NewCalibFile.Text);
+                Excel.Application xlApp = new Excel.Application();
+                string xlLoc= Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)+"\\Results.xlsx";
+                Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
+                //Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
 
                 foreach (var item in Mappings)
                 {
@@ -120,24 +125,25 @@ namespace CalibrationDocumentation
                             item.Value.Value = temp?.InnerText;
                         }
                     }
-                    if (item.Value.File == "OldOutputChartFile" || item.Value.File == "NewOutputChartFile")
+                    if (item.Value.File == "OutputChartFile")
                     {
+                        //strip square brackets off end
+                        Regex SquareBrackets = new Regex("\\[(.*?)]");
 
-                        Excel.Application xlApp = new Excel.Application();
-                        Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"c:\test\sandbox_test2.xlsx");
-                        Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+                        Match msbrackets = SquareBrackets.Match(item.Value.xPath);
 
-                        var y = xlWorkbook.Names.Item("MyData").RefersToRange.Value;
+                        var Cells = msbrackets.Value.Trim(new char[] {'[', ']'}).Split('|');
 
+                        string RangeName = SquareBrackets.Replace(item.Value.xPath, "");
 
-                        Excel.ChartObject chartObject2 = (Excel.ChartObject)xlWorksheet.ChartObjects("mychart");
+                        var RangeData = xlWorkbook.Names.Item(RangeName).RefersToRange.Value;
 
+                        item.Value.Value = RangeData[int.Parse(Cells[0]),int.Parse(Cells[1])].ToString();
 
-                        chartObject2.Chart.ChartArea.Copy();
-        
-                        Console.WriteLine(y);
-                        xlWorkbook.Close();
-                        xlApp.Quit();
+                        //Excel.ChartObject chartObject2 = (Excel.ChartObject)xlWorksheet.ChartObjects("mychart");
+                        //chartObject2.Chart.ChartArea.Copy();
+                        //Console.WriteLine(y);
+
 
                     }
                     if (item.Value.File == "OldOutputFile" || item.Value.File == "NewOutputFile")
@@ -170,15 +176,17 @@ namespace CalibrationDocumentation
                     m = m.NextMatch();
                 }
 
-                
+
                 //docText = regexText.Replace(docText, val);
-                
+                xlWorkbook.Close();
+                xlApp.Quit();
+
                 using (StreamWriter sw = new StreamWriter(template.MainDocumentPart.GetStream(FileMode.Create)))
                 {
                     sw.Write(docText);
                 }
             }
-
+            
             // Run Word to open the document:
             System.Diagnostics.Process.Start(path);
         }
@@ -243,6 +251,104 @@ namespace CalibrationDocumentation
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 CalibrationReport.Text = saveFileDialog1.FileName;
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+            string OldCalib = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\OldCalib.csv";
+            string NewCalib = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\NewCalib.csv";
+            // Prepare the process to run
+            ProcessStartInfo start = new ProcessStartInfo();
+            // Enter in the command line arguments, everything you would enter after the executable name itself
+            start.Arguments = "--forceoutput --testdata "+OldCalibFile.Text+" --compdata c:\\results.csv --csvresdata "+ OldCalib;
+            // Enter the executable to run, including the complete path
+            start.FileName = UnitTextharness.Text;
+            // Do you want to show a console window?
+            start.WindowStyle = ProcessWindowStyle.Hidden;
+            start.CreateNoWindow = true;
+            int exitCode;
+
+
+            // Run the external process & wait for it to finish
+            using (Process proc = Process.Start(start))
+            {
+                proc.WaitForExit();
+
+                // Retrieve the app's exit code
+                exitCode = proc.ExitCode;
+            }
+
+            // Enter in the command line arguments, everything you would enter after the executable name itself
+            start.Arguments = "--forceoutput --testdata " + NewCalibFile.Text + " --compdata c:\\results.csv --csvresdata " + NewCalib;
+            // Enter the executable to run, including the complete path
+            start.FileName = UnitTextharness.Text;
+            // Do you want to show a console window?
+            start.WindowStyle = ProcessWindowStyle.Hidden;
+            start.CreateNoWindow = true;
+
+            // Run the external process & wait for it to finish
+            using (Process proc = Process.Start(start))
+            {
+                proc.WaitForExit();
+
+                // Retrieve the app's exit code
+                exitCode = proc.ExitCode;
+            }
+
+
+
+
+            Excel.Application xlApp = new Excel.Application();
+            xlApp.DisplayAlerts = false;
+            string xlLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
+
+            Excel.Workbook xlOldCalib = xlApp.Workbooks.Open(OldCalib);
+
+            Excel.Range srcrange;
+            Excel.Range dstrange;
+            Excel.Worksheet dstworkSheet = xlWorkbook.Worksheets.get_Item("OldCalib");
+            var range = xlWorkbook.Names.Item("OldCalib").RefersToRange;
+            range.ClearContents();
+            Excel.Worksheet srcworkSheet = xlOldCalib.Worksheets.get_Item(1);
+            srcrange = srcworkSheet.UsedRange;
+            srcrange.Copy(Type.Missing);                       
+            range.PasteSpecial(Excel.XlPasteType.xlPasteValues,Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone, Type.Missing, Type.Missing);
+            xlOldCalib.Close();
+
+            dstworkSheet = xlWorkbook.Worksheets.get_Item("NewCalib");
+            range = xlWorkbook.Names.Item("NewCalib").RefersToRange;
+            range.ClearContents();
+            Excel.Workbook xlNewCalib = xlApp.Workbooks.Open(NewCalib);
+            srcworkSheet = xlNewCalib.Worksheets.get_Item(1);
+            srcrange = srcworkSheet.UsedRange;
+            srcrange.Copy(Type.Missing);                        
+            range.PasteSpecial(Excel.XlPasteType.xlPasteValues,Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone, Type.Missing, Type.Missing);
+            xlNewCalib.Close();
+            
+            srcrange = dstworkSheet.get_Range("A1:A1"); 
+            srcrange.Copy(Type.Missing);
+
+            xlWorkbook.Save();
+            xlWorkbook.Close();
+            
+            xlApp.Quit();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "Unit Test harness (UnitTestHarenss.exe)|UnitTestHarness.exe|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                UnitTextharness.Text = openFileDialog1.FileName;
             }
         }
     }

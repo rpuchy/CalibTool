@@ -18,3 +18,13 @@ C:\Code\CalibTool\CalibrationDocumentation\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Code\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Form1.resources
 C:\Code\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Properties.Resources.resources
 C:\Code\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csproj.GenerateResource.Cache
+C:\Git\CalibTool\CalibrationDocumentation\bin\Debug\CalibrationDocumentation.exe.config
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.exe
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.pdb
+C:\Git\CalibTool\CalibrationDocumentation\bin\Debug\CalibrationDocumentation.exe
+C:\Git\CalibTool\CalibrationDocumentation\bin\Debug\CalibrationDocumentation.pdb
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csproj.ResolveComReference.cache
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Form1.resources
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Properties.Resources.resources
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csproj.GenerateResource.Cache
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csprojResolveAssemblyReference.cache
