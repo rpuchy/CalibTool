@@ -103,7 +103,7 @@ namespace CalibrationDocumentation
                 Excel.Application xlApp = new Excel.Application();
                 string xlLoc= Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)+"\\Results.xlsx";
                 Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
-                //Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+                Excel.Worksheet xlWorksheet;
 
                 foreach (var item in Mappings)
                 {
@@ -125,7 +125,7 @@ namespace CalibrationDocumentation
                             item.Value.Value = temp?.InnerText;
                         }
                     }
-                    if (item.Value.File == "OutputChartFile")
+                    if (item.Value.File == "OutputFile")
                     {
                         //strip square brackets off end
                         Regex SquareBrackets = new Regex("\\[(.*?)]");
@@ -139,15 +139,6 @@ namespace CalibrationDocumentation
                         var RangeData = xlWorkbook.Names.Item(RangeName).RefersToRange.Value;
 
                         item.Value.Value = RangeData[int.Parse(Cells[0]),int.Parse(Cells[1])].ToString();
-
-                        //Excel.ChartObject chartObject2 = (Excel.ChartObject)xlWorksheet.ChartObjects("mychart");
-                        //chartObject2.Chart.ChartArea.Copy();
-                        //Console.WriteLine(y);
-
-
-                    }
-                    if (item.Value.File == "OldOutputFile" || item.Value.File == "NewOutputFile")
-                    {
 
 
                     }
@@ -172,12 +163,25 @@ namespace CalibrationDocumentation
                         {
                             docText = regexText.Replace(docText, val.Value);
                         }
+                        else
+                        {
+                            //check if a chart exists in the excel document
+                            if (val.File == "Chart")
+                            {
+                                xlWorksheet = xlWorkbook.Worksheets.get_Item(val.xPath.Split('_')[0]);
+
+                                Excel.ChartObject chartObject = (Excel.ChartObject)xlWorksheet.ChartObjects(val.xPath.Split('_')[1]);
+                                chartObject.Chart.ChartArea.Copy();
+
+                            }
+
+                        }
                     }
                     m = m.NextMatch();
                 }
 
 
-                //docText = regexText.Replace(docText, val);
+                
                 xlWorkbook.Close();
                 xlApp.Quit();
 
