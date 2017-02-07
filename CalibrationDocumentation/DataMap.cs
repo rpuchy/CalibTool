@@ -17,6 +17,8 @@ namespace CalibrationDocumentation
         public string File { get; set; }
         public string xPath { get; set; }
         public string Value { get; set; }
+        public int decimals { get; set; }
+        public string overwrite { get; set; }
     }
 
     

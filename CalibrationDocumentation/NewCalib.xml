@@ -3800,7 +3800,28 @@
 						<ValueType>TOTALRETURN</ValueType>
 					</ValueTypes>
 				</Values>
-			</Query> 			
+			</Query>
+			<Query>
+				<QueryID>AuYieldCurve_SpotRate10</QueryID>
+				<Type>SIMVALUE</Type>
+				<Filter>
+					<QueryFilter>
+						<ObjectName>model</ObjectName>
+						<Where>
+							<QueryFilterCriteria>
+								<Field>ModelID</Field>
+								<Value>1111111</Value>
+							</QueryFilterCriteria>
+						</Where>
+					</QueryFilter>
+				</Filter>
+				<Values>	
+					<ZeroPrice>
+						<RateType>SPOT</RateType>
+						<Maturities>10</Maturities>
+					</ZeroPrice>
+				</Values>
+			</Query> 		
 		</Queries>
         <Operators>	
 			<Operator>
@@ -4568,7 +4589,61 @@
 					</ApplyTo>
 					<Type>VOLATILITY</Type>
 				</Operation>
-			</Operator>		
+			</Operator>	
+			<Operator>
+				<OperatorID>AuYieldCurve_SpotRate10_Percentiles</OperatorID>
+				<Operation>
+					<ApplyTo>
+						<OperationApplyTo>
+							<QueryID>AuYieldCurve_SpotRate10</QueryID>
+							<Value>ZCBPRICE</Value>
+							<TimeStepStart>0</TimeStepStart>
+							<TimeStepEnd>31</TimeStepEnd>
+							<Operation />
+						</OperationApplyTo>
+					</ApplyTo>
+					<Type>PERCENTILE</Type>
+					<Percentiles>
+						<PercentilesItem>99</PercentilesItem>
+						<PercentilesItem>95</PercentilesItem>
+						<PercentilesItem>75</PercentilesItem>
+						<PercentilesItem>50</PercentilesItem>
+						<PercentilesItem>25</PercentilesItem>
+						<PercentilesItem>5</PercentilesItem>
+						<PercentilesItem>1</PercentilesItem>
+					</Percentiles>
+				</Operation>
+			</Operator>
+			<Operator>
+				<OperatorID>AuYieldCurve_SpotRate10_Average</OperatorID>
+				<Operation>
+					<ApplyTo>
+						<OperationApplyTo>
+							<QueryID>AuYieldCurve_SpotRate10</QueryID>
+							<Value>ZCBPRICE</Value>
+							<TimeStepStart>0</TimeStepStart>
+							<TimeStepEnd>31</TimeStepEnd>
+							<Operation />
+						</OperationApplyTo>
+					</ApplyTo>
+					<Type>AVERAGE</Type>
+				</Operation>
+			</Operator>
+			<Operator>
+				<OperatorID>AuYieldCurve_SpotRate10_Volatility</OperatorID>
+				<Operation>
+					<ApplyTo>
+						<OperationApplyTo>
+							<QueryID>InternationalAlternatives_TOTALRETURN</QueryID>
+							<Value>ZCBPRICE</Value>
+							<TimeStepStart>0</TimeStepStart>
+							<TimeStepEnd>31</TimeStepEnd>
+							<Operation />
+						</OperationApplyTo>
+					</ApplyTo>
+					<Type>VOLATILITY</Type>
+				</Operation>
+			</Operator>					
 
 			
 		</Operators>

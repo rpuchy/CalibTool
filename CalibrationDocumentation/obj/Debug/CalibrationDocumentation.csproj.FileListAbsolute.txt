@@ -27,5 +27,5 @@ C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csp
 C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Form1.resources
 C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Properties.Resources.resources
 C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csproj.GenerateResource.Cache
-C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csprojResolveAssemblyReference.cache
 C:\Code\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csproj.ResolveComReference.cache
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csprojResolveAssemblyReference.cache

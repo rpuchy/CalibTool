@@ -67,7 +67,11 @@ namespace CalibrationDocumentation
                     {
                         values[i] = values[i].Trim();
                     }
-                    Mappings.Add(values[0], new DataMap() {File=values[1] , xPath= values[2]});
+                    if (values[0] != "" && values[1] != "" && values[2] != "" && values[3] != "")
+                    {
+                        Mappings.Add(values[0],
+                            new DataMap() {File = values[1], xPath = values[2], decimals = int.Parse(values[3]), overwrite = values[4]});
+                    }
                 }
             }
 
@@ -107,8 +111,14 @@ namespace CalibrationDocumentation
 
                 foreach (var item in Mappings)
                 {
+                    if (item.Value.overwrite != "")
+                    {
+                        item.Value.Value = item.Value.overwrite;
+                        continue;
+                    }
                     if (item.Value.File == "OldCalibFile" || item.Value.File == "NewCalibFile")
                     {
+                        
                         XmlDocument fileToUse;
                         if (item.Value.File != "" && item.Value.xPath != "")
                         {
@@ -122,7 +132,26 @@ namespace CalibrationDocumentation
                             }
                             XmlNode temp = fileToUse.SelectSingleNode(item.Value.xPath);
 
-                            item.Value.Value = temp?.InnerText;
+                            if (temp != null && item.Value.decimals >= 0)
+                            {
+                                item.Value.Value = Math.Round(Double.Parse(temp.InnerText), item.Value.decimals).ToString();
+                            }
+                            else
+                            {
+                                if (temp!=null && item.Value.decimals == -1)
+                                {
+                                    //we are using -1 as a full date conversion
+                                    DateTime dt = Convert.ToDateTime(temp.InnerText);
+                                    item.Value.Value = dt.ToString("dd MMMM yyyy");
+                                }
+                                else
+                                {
+                                    item.Value.Value = temp?.InnerText;
+                                }
+                                
+                            }
+
+                            
                         }
                     }
                     if (item.Value.File == "OutputFile")
@@ -138,7 +167,16 @@ namespace CalibrationDocumentation
 
                         var RangeData = xlWorkbook.Names.Item(RangeName).RefersToRange.Value;
 
-                        item.Value.Value = RangeData[int.Parse(Cells[0]),int.Parse(Cells[1])].ToString();
+                        if (item.Value.decimals >= 0)
+                        {
+                            item.Value.Value = Math.Round(RangeData[int.Parse(Cells[0]), int.Parse(Cells[1])], item.Value.decimals).ToString();
+                        }
+                        else
+                        {
+                            item.Value.Value = RangeData[int.Parse(Cells[0]), int.Parse(Cells[1])].ToString();
+                        }
+
+                       
 
 
                     }
@@ -168,11 +206,14 @@ namespace CalibrationDocumentation
                             //check if a chart exists in the excel document
                             if (val.File == "Chart")
                             {
-                                xlWorksheet = xlWorkbook.Worksheets.get_Item(val.xPath.Split('_')[0]);
+                                if (val.xPath != "")
+                                {
+                                    xlWorksheet = xlWorkbook.Worksheets.get_Item(val.xPath.Split('_')[0]);
 
-                                Excel.ChartObject chartObject = (Excel.ChartObject)xlWorksheet.ChartObjects(val.xPath.Split('_')[1]);
-                                chartObject.Chart.ChartArea.Copy();
-
+                                    Excel.ChartObject chartObject =
+                                        (Excel.ChartObject) xlWorksheet.ChartObjects(val.xPath.Split('_')[1]);
+                                    chartObject.Chart.ChartArea.Copy();
+                                }
                             }
 
                         }
@@ -273,8 +314,6 @@ namespace CalibrationDocumentation
             start.WindowStyle = ProcessWindowStyle.Hidden;
             start.CreateNoWindow = true;
             int exitCode;
-
-
             // Run the external process & wait for it to finish
             using (Process proc = Process.Start(start))
             {
@@ -307,7 +346,7 @@ namespace CalibrationDocumentation
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
             Excel.Workbook xlOldCalib = xlApp.Workbooks.Open(OldCalib);
             Excel.Range srcrange;
-            Excel.Range dstrange;
+
             Excel.Worksheet dstworkSheet = xlWorkbook.Worksheets.get_Item("OldCalib");
             var range = xlWorkbook.Names.Item("OldCalib").RefersToRange;
             range.ClearContents();
