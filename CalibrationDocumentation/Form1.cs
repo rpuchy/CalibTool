@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.XPath;
 using Excel = Microsoft.Office.Interop.Excel;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace CalibrationDocumentation
 {
@@ -67,7 +68,7 @@ namespace CalibrationDocumentation
                     {
                         values[i] = values[i].Trim();
                     }
-                    if (values[0] != "" && values[1] != "" && values[2] != "" && values[3] != "")
+                    if ((values[0] != "" && values[1] != "" && values[2] != "" && values[3] != "")||(values[0]!="" &&values[4]!=""))
                     {
                         Mappings.Add(values[0],
                             new DataMap() {File = values[1], xPath = values[2], decimals = int.Parse(values[3]), overwrite = values[4]});
@@ -201,22 +202,7 @@ namespace CalibrationDocumentation
                         {
                             docText = regexText.Replace(docText, val.Value);
                         }
-                        else
-                        {
-                            //check if a chart exists in the excel document
-                            if (val.File == "Chart")
-                            {
-                                if (val.xPath != "")
-                                {
-                                    xlWorksheet = xlWorkbook.Worksheets.get_Item(val.xPath.Split('_')[0]);
 
-                                    Excel.ChartObject chartObject =
-                                        (Excel.ChartObject) xlWorksheet.ChartObjects(val.xPath.Split('_')[1]);
-                                    chartObject.Chart.ChartArea.Copy();
-                                }
-                            }
-
-                        }
                     }
                     m = m.NextMatch();
                 }
@@ -388,6 +374,38 @@ namespace CalibrationDocumentation
             {
                 UnitTextharness.Text = openFileDialog1.FileName;
             }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Excel.Application xlApp = new Excel.Application();
+            xlApp.DisplayAlerts = false;
+            string xlLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
+            Excel.Worksheet xlWorksheet = xlWorkbook.Worksheets.get_Item("OldPercentile");
+            Excel.ChartObject chartObject = (Excel.ChartObject)xlWorksheet.ChartObjects("OldCashChart");
+
+
+            Word.Application wordApp = new Word.Application();
+            wordApp.DisplayAlerts = Word.WdAlertLevel.wdAlertsNone;
+            string ReportLoc =CalibrationReport.Text;
+            Word.Document wrdDocument = wordApp.Documents.Open(ReportLoc);
+            chartObject.Chart.ChartArea.Copy();
+            Word.Range rng = wrdDocument.Bookmarks["OldCashChart"].Range;
+            rng.PasteSpecial(Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+            Word.InlineShape shape= rng.InlineShapes[1];
+            shape.Height = 1;
+            shape.Width = 1;
+
+           wrdDocument.Save();
+           wordApp.Quit();
+            xlApp.Quit();
+
+
+
+
         }
     }
 }
