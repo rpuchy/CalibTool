@@ -52,7 +52,27 @@ namespace CalibrationDocumentation
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private double correlation(List<double> Var1, List<double> Var2)
+        {
+            if (Var1.Count != Var2.Count)
+                throw new ArgumentException("values must be the same length");
+
+            var avg1 = Var1.Average();
+            var avg2 = Var2.Average();
+
+            var sum1 = Var1.Zip(Var2, (x1, y1) => (x1 - avg1) * (y1 - avg2)).Sum();
+
+            var sumSqr1 = Var1.Sum(x => Math.Pow((x - avg1), 2.0));
+            var sumSqr2 = Var2.Sum(y => Math.Pow((y - avg2), 2.0));
+
+            var result = sum1 / Math.Sqrt(sumSqr1 * sumSqr2);
+
+            return result;
+
+        }
+
+
+    private void button2_Click(object sender, EventArgs e)
         {
             Mappings = new Dictionary<string, DataMap>();
             using (var fs = File.OpenRead(@".\OutputMap.csv"))
@@ -82,7 +102,7 @@ namespace CalibrationDocumentation
             String templatePath = Path.Combine(Environment.CurrentDirectory, ReportTemplate.Text);
             string path = CalibrationReport.Text;
             Excel.Application xlApp = new Excel.Application();
-            string xlLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
+            string xlLoc = Path.GetTempPath() + "\\Results.xlsx";
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
             Excel.Worksheet xlWorksheet;
 
@@ -392,8 +412,8 @@ namespace CalibrationDocumentation
         private void button7_Click(object sender, EventArgs e)
         {
 
-            string OldCalib = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\OldCalib.csv";
-            string NewCalib = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\NewCalib.csv";
+            string OldCalib = Path.GetTempPath() + "\\OldCalib.csv";
+            string NewCalib = Path.GetTempPath() + "\\NewCalib.csv";
 
 
             string OldCalibLocation = Path.GetTempPath() + Path.GetFileName(OldCalibFile.Text);
@@ -462,7 +482,11 @@ namespace CalibrationDocumentation
 
             Excel.Application xlApp = new Excel.Application();
             xlApp.DisplayAlerts = false;
-            string xlLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
+            string xlOrigLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
+
+            string xlLoc = Path.GetTempPath() + "\\Results.xlsx";
+
+            File.Copy(xlOrigLoc,xlLoc,true);
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
 
             //Now we need to process the scenario files.
@@ -569,5 +593,102 @@ namespace CalibrationDocumentation
             }
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Word.Application wordApp = new Word.Application();
+            wordApp.DisplayAlerts = Word.WdAlertLevel.wdAlertsNone;
+            string ReportLoc = CalibrationReport.Text;
+            Word.Document wrdDocument = wordApp.Documents.Open(ReportLoc);
+
+            Dictionary<string, ModelID> ModelMap = new Dictionary<string, ModelID>();
+            //Load Model ID MAP
+            using (var fs = File.OpenRead(@".\ModelIDMAP.csv"))
+            using (var reader = new StreamReader(fs))
+            {
+                //skip the first line
+                reader.ReadLine();
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    //remove whitespace from items.
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        values[i] = values[i].Trim();
+                    }
+                    if (values[0] != "" && values[1] != "")
+                    {
+                        ModelMap.Add(values[0], new ModelID() { RangeName = values[1], VarName = values[2], timestep = int.Parse(values[3]), order = int.Parse(values[4])});
+                    }
+                }
+            }
+
+
+            XmlDocument CalibXml = new XmlDocument();
+            string OldCalibLocation = Path.GetTempPath() + Path.GetFileName(OldCalibFile.Text);
+            CalibXml.Load(OldCalibLocation);
+            string xPathQuery_filename = "//ScenarioFile//FileName";
+            string xPathQuery_ModelID = "//ScenarioFile//ModelId";
+            XmlNodeList sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
+            XmlNodeList sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
+
+            for (int i = 0; i < sfilenames.Count; i++)
+            {
+                string filename = sfilenames[i].InnerText;
+                string modelid = sModelIDs[i].InnerText;
+                ModelID temp;
+                if (!ModelMap.TryGetValue(modelid, out temp))
+                {
+                    continue;
+                }
+
+                List<double> ScenarioData = new List<double>();
+
+                using (var fs = File.OpenRead(filename))
+                using (var reader = new StreamReader(fs))
+                {
+                    //skip the first line
+                    var header = reader.ReadLine().Split(',');
+                    //Figure out the index to use
+                    int headertouse = 0;
+                    for (int j = 0; j < header.Length; j++)
+                    {
+                        if (header[j] == ModelMap[modelid].VarName)
+                        {
+                            headertouse = j;
+                        }
+
+                    }
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        ScenarioData.Add(Double.Parse(values[headertouse]));
+                    }
+                    ModelMap[modelid].ScenarioData = ScenarioData;
+                }
+            }
+
+
+            Word.Range rng = wrdDocument.Bookmarks["CORRELATIONMATRIX"].Range;
+
+            Word.Table CorrTable =  rng.Tables[1];
+
+            foreach (var kvp in ModelMap)
+            {
+                foreach (var kvp2 in ModelMap)
+                {
+                    if (kvp.Value.order < kvp2.Value.order)
+                    {
+                        CorrTable.Cell(1 + kvp.Value.order, 1 + kvp2.Value.order).Range.Text =
+                            Math.Round(correlation(kvp.Value.ScenarioData, kvp2.Value.ScenarioData), 2).ToString();
+                    }
+                }
+
+            }
+
+            wrdDocument.Save();
+            wordApp.Quit();
+        }
     }
 }

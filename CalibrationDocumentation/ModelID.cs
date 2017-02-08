@@ -17,5 +17,7 @@ namespace CalibrationDocumentation
         public string RangeName { get; set; }
         public string VarName { get; set; }
         public int timestep { get; set; }
+        public int order { get; set; }
+        public List<double> ScenarioData { get; set; }
     }
 }
