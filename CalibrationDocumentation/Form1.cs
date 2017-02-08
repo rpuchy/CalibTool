@@ -80,6 +80,10 @@ namespace CalibrationDocumentation
             MemoryStream documentStream;
             String templatePath = Path.Combine(Environment.CurrentDirectory, ReportTemplate.Text);
             string path = CalibrationReport.Text;
+            Excel.Application xlApp = new Excel.Application();
+            string xlLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
+            Excel.Worksheet xlWorksheet;
 
             File.Copy(templatePath, path, true);
 
@@ -105,10 +109,7 @@ namespace CalibrationDocumentation
                 XmlDocument NewCalibXml = new XmlDocument();
                 OldCalibXml.Load(OldCalibFile.Text);
                 NewCalibXml.Load(NewCalibFile.Text);
-                Excel.Application xlApp = new Excel.Application();
-                string xlLoc= Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)+"\\Results.xlsx";
-                Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
-                Excel.Worksheet xlWorksheet;
+
 
                 foreach (var item in Mappings)
                 {
@@ -207,16 +208,38 @@ namespace CalibrationDocumentation
                     m = m.NextMatch();
                 }
 
-
-                
-                xlWorkbook.Close();
-                xlApp.Quit();
-
+               
                 using (StreamWriter sw = new StreamWriter(template.MainDocumentPart.GetStream(FileMode.Create)))
                 {
                     sw.Write(docText);
                 }
             }
+            //We are going to do the charts afterwards because we need to paste the images in interop.
+            Word.Application wordApp = new Word.Application();
+            wordApp.DisplayAlerts = Word.WdAlertLevel.wdAlertsNone;
+            string ReportLoc = CalibrationReport.Text;
+            Word.Document wrdDocument = wordApp.Documents.Open(ReportLoc);
+
+            foreach (var item in Mappings)
+            {
+               if (item.Value.File == "Chart")
+               {
+                   xlWorksheet = xlWorkbook.Worksheets.get_Item(item.Value.xPath.Split('_')[0]);
+                   Excel.ChartObject chartObject = (Excel.ChartObject)xlWorksheet.ChartObjects(item.Value.xPath.Split('_')[1]);
+
+                   chartObject.Chart.ChartArea.Copy();
+                   Word.Range rng = wrdDocument.Bookmarks[item.Key.Trim('@')].Range;
+                   rng.PasteSpecial(Type.Missing, Type.Missing,
+                            Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+                }
+
+            }
+            wrdDocument.Save();
+            wrdDocument.Close(Type.Missing,Type.Missing,Type.Missing);
+            wordApp.Quit();  
+            xlWorkbook.Close();
+            xlApp.Quit();            
             
             // Run Word to open the document:
             System.Diagnostics.Process.Start(path);
@@ -376,36 +399,5 @@ namespace CalibrationDocumentation
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Excel.Application xlApp = new Excel.Application();
-            xlApp.DisplayAlerts = false;
-            string xlLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
-            Excel.Worksheet xlWorksheet = xlWorkbook.Worksheets.get_Item("OldPercentile");
-            Excel.ChartObject chartObject = (Excel.ChartObject)xlWorksheet.ChartObjects("OldCashChart");
-
-
-            Word.Application wordApp = new Word.Application();
-            wordApp.DisplayAlerts = Word.WdAlertLevel.wdAlertsNone;
-            string ReportLoc =CalibrationReport.Text;
-            Word.Document wrdDocument = wordApp.Documents.Open(ReportLoc);
-            chartObject.Chart.ChartArea.Copy();
-            Word.Range rng = wrdDocument.Bookmarks["OldCashChart"].Range;
-            rng.PasteSpecial(Type.Missing, Type.Missing,
-                Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-
-            Word.InlineShape shape= rng.InlineShapes[1];
-            shape.Height = 1;
-            shape.Width = 1;
-
-           wrdDocument.Save();
-           wordApp.Quit();
-            xlApp.Quit();
-
-
-
-
-        }
     }
 }
