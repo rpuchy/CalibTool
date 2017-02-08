@@ -15,6 +15,7 @@ using DocumentFormat.OpenXml.Packaging;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.XPath;
+using Microsoft.Office.Core;
 using Excel = Microsoft.Office.Interop.Excel;
 using Word = Microsoft.Office.Interop.Word;
 
@@ -324,6 +325,70 @@ namespace CalibrationDocumentation
         }
 
 
+        private Double[,] HistogramData(string filename, int timestep, string Variable)
+        {
+            List<double> ScenarioData = new List<double>();
+            Double[,] Result = new Double[2,50];
+            using (var fs = File.OpenRead(filename))
+            using (var reader = new StreamReader(fs))
+            {
+                //skip the first line
+                var header = reader.ReadLine().Split(',');
+                //Figure out the index to use
+                int headertouse = 0;
+                for (int j = 0; j < header.Length; j++)
+                {
+                    if (header[j] == Variable)
+                    {
+                        headertouse = j;
+                    }
+
+                }
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    if (int.Parse(values[1]) == timestep)
+                    {
+                        ScenarioData.Add(Double.Parse(values[headertouse]));
+                    }
+                }
+                //now process the data.
+                ScenarioData.Sort();
+                double min = ScenarioData.Min();
+                double max = ScenarioData.Max();
+                double bucketsize = (max - min) / 50;
+                List<Double> Buckets = new List<double>();
+                Buckets.Add(min + bucketsize);
+                for (int j = 1; j < 50; j++)
+                {
+                    Buckets.Add(Buckets[j - 1] + bucketsize);
+                }
+                //Now we count
+                List<Double> Percentages = new List<double>();
+                double boundary = Buckets[0];
+                for (int j = 0; j < ScenarioData.Count; j++)
+                {
+                    if (boundary <= ScenarioData[j])
+                    {
+                        Percentages.Add((double) j / ScenarioData.Count);
+                        boundary = Buckets[Percentages.Count];
+                    }
+                }
+                //Finish up to 50 buckets.
+                for (int j = Percentages.Count; j < 50; j++)
+                {
+                    Percentages.Add(1);
+                }
+                for (int j = 0; j < 50; j++)
+                {
+                    Result[0, j]=Buckets[j];
+                    Result[1, j] = Percentages[j];
+                }
+            }                       
+            return Result;
+            }
+
         private void button7_Click(object sender, EventArgs e)
         {
 
@@ -372,10 +437,92 @@ namespace CalibrationDocumentation
                 exitCode = proc.ExitCode;
             }
 
+            Dictionary<string, ModelID> ModelMap = new Dictionary<string, ModelID>();
+            //Load Model ID MAP
+            using (var fs = File.OpenRead(@".\ModelIDMAP.csv"))
+            using (var reader = new StreamReader(fs))
+            {
+                //skip the first line
+                reader.ReadLine();
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    //remove whitespace from items.
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        values[i] = values[i].Trim();
+                    }
+                    if (values[0] != "" && values[1] != "")
+                    {
+                        ModelMap.Add(values[0], new ModelID() {RangeName = values[1], VarName = values[2], timestep = int.Parse(values[3])});
+                    }
+                }
+            }
+
             Excel.Application xlApp = new Excel.Application();
             xlApp.DisplayAlerts = false;
             string xlLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
+
+            //Now we need to process the scenario files.
+            XmlDocument CalibXml = new XmlDocument();
+            CalibXml.Load(OldCalibLocation);
+            string xPathQuery_filename = "//ScenarioFile//FileName";
+            string xPathQuery_ModelID = "//ScenarioFile//ModelId";
+            XmlNodeList sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
+            XmlNodeList sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
+             
+            for (int i = 0; i < sfilenames.Count; i++)
+            {
+                string filename = sfilenames[i].InnerText;
+                string modelid = sModelIDs[i].InnerText;
+                ModelID temp;
+                if (!ModelMap.TryGetValue(modelid, out temp))
+                {
+                    continue;
+                }
+
+                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName);
+
+                var rng = xlWorkbook.Names.Item("Old"+ModelMap[modelid].RangeName).RefersToRange;
+                rng.Cells[1, 1] = HistData[0,0];
+                rng.Cells[2, 1] = HistData[1,0];
+                
+                for (int j = 1; j < 50; j++)
+                {
+                     rng.Cells[1, j + 1] = HistData[0,j];
+                     rng.Cells[2, j + 1] = HistData[1,j]-HistData[1,j-1];
+                }
+            }
+
+            CalibXml.Load(NewCalibLocation);
+            sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
+            sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
+
+            for (int i = 0; i < sfilenames.Count; i++)
+            {
+                string filename = sfilenames[i].InnerText;
+                string modelid = sModelIDs[i].InnerText;
+                ModelID temp;
+                if (!ModelMap.TryGetValue(modelid, out temp))
+                {
+                    continue;
+                }
+
+                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName);
+
+                var rng = xlWorkbook.Names.Item("New" + ModelMap[modelid].RangeName).RefersToRange;
+                rng.Cells[1, 1] = HistData[0, 0];
+                rng.Cells[2, 1] = HistData[1, 0];
+
+                for (int j = 1; j < 50; j++)
+                {
+                    rng.Cells[1, j + 1] = HistData[0, j];
+                    rng.Cells[2, j + 1] = HistData[1, j] - HistData[1, j - 1];
+                }
+            }
+
             Excel.Workbook xlOldCalib = xlApp.Workbooks.Open(OldCalib);
             Excel.Range srcrange;
 
