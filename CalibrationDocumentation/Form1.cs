@@ -245,15 +245,26 @@ namespace CalibrationDocumentation
             {
                if (item.Value.File == "Chart")
                {
-                   xlWorksheet = xlWorkbook.Worksheets.get_Item(item.Value.xPath.Split('_')[0]);
-                   Excel.ChartObject chartObject = (Excel.ChartObject)xlWorksheet.ChartObjects(item.Value.xPath.Split('_')[1]);
+                   //try
+                   //{
+                       xlWorksheet = xlWorkbook.Worksheets.get_Item(item.Value.xPath.Split('_')[0]);
+                       xlWorksheet.Select();
+                       var rng_temp = xlWorksheet.get_Range("A1", "A1");
+                       rng_temp.Select();
+                       Excel.ChartObject chartObject =
+                           (Excel.ChartObject) xlWorksheet.ChartObjects(item.Value.xPath.Split('_')[1]);
 
-                   chartObject.Chart.ChartArea.Copy();
-                   Word.Range rng = wrdDocument.Bookmarks[item.Key.Trim('@')].Range;
-                   rng.PasteSpecial(Type.Missing, Type.Missing,
-                            Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                       chartObject.Chart.ChartArea.Copy();
+                       Word.Range rng = wrdDocument.Bookmarks[item.Key.Trim('@')].Range;
+                       rng.PasteSpecial(Type.Missing, Type.Missing,
+                           Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                  // }
+                  // catch (Exception e1)
+                  // {
+                       //make a note of errors
+                 //  }
 
-                }
+               }
 
             }
             wrdDocument.Save();
@@ -663,6 +674,7 @@ namespace CalibrationDocumentation
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
+                        if (int.Parse( values[1])==ModelMap[modelid].timestep)
                         ScenarioData.Add(Double.Parse(values[headertouse]));
                     }
                     ModelMap[modelid].ScenarioData = ScenarioData;

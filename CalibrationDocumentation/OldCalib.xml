@@ -3,7 +3,7 @@
 	<Version>1.1</Version>
     <Params>
 		<name>ESGoutputs_July2016</name>
-		<effective_date>2016-12-31</effective_date>
+		<effective_date>2016-09-30</effective_date>
         <Scenarios>5000</Scenarios>
         <time_steps>30</time_steps>
         <time_step_sizes/>
@@ -17,7 +17,7 @@
     <Inputs>
 		<EconomicScenarioGenerator>
             <Name>DefaultGenerated</Name>
-			<CalibrationDate>2016-12-31</CalibrationDate>
+			<CalibrationDate>2016-09-30</CalibrationDate>
             <BaseCurrency>
                 <code>AUD</code>
             </BaseCurrency>
@@ -25,7 +25,7 @@
             <Currencies>
                 <ESGCurrencies>
                     <Models>
-						<Model>
+					<Model>
 							<ModelID>1111111</ModelID>
 							<Class>TWOFACTORHULLWHITE</Class>
 							<Name>AUYieldCurve</Name>
@@ -39,403 +39,403 @@
 							<InputCurve>
 								<ZeroPrice>
 									<Maturity>1</Maturity>
-									<Rate>0.9847</Rate>
+									<Rate>0.9864</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>2</Maturity>
-									<Rate>0.9652</Rate>
+									<Rate>0.9723</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>3</Maturity>
-									<Rate>0.9418</Rate>
+									<Rate>0.9557</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>4</Maturity>
-									<Rate>0.917</Rate>
+									<Rate>0.938</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>5</Maturity>
-									<Rate>0.8917</Rate>
+									<Rate>0.9202</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>6</Maturity>
-									<Rate>0.8659</Rate>
+									<Rate>0.9022</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>7</Maturity>
-									<Rate>0.8394</Rate>
+									<Rate>0.8837</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>8</Maturity>
-									<Rate>0.8119</Rate>
+									<Rate>0.8643</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>9</Maturity>
-									<Rate>0.7837</Rate>
+									<Rate>0.8438</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>10</Maturity>
-									<Rate>0.755</Rate>
+									<Rate>0.8223</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>11</Maturity>
-									<Rate>0.727351027178767</Rate>
+									<Rate>0.801347819388481</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>12</Maturity>
-									<Rate>0.700714591705971</Rate>
+									<Rate>0.780929499743005</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>13</Maturity>
-									<Rate>0.675053613293362</Rate>
+									<Rate>0.761031438301343</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>14</Maturity>
-									<Rate>0.650332369575716</Rate>
+									<Rate>0.741640378899259</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>15</Maturity>
-									<Rate>0.626516446382118</Rate>
+									<Rate>0.722743403139204</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>16</Maturity>
-									<Rate>0.603572689828377</Rate>
+									<Rate>0.704327921784034</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>17</Maturity>
-									<Rate>0.581469160163869</Rate>
+									<Rate>0.686381666370006</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>18</Maturity>
-									<Rate>0.560175087308564</Rate>
+									<Rate>0.668892681033486</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>19</Maturity>
-									<Rate>0.539660828018331</Rate>
+									<Rate>0.651849314545906</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>20</Maturity>
-									<Rate>0.51989782461891</Rate>
+									<Rate>0.63524021255167</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>21</Maturity>
-									<Rate>0.500858565251087</Rate>
+									<Rate>0.619054310003837</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>22</Maturity>
-									<Rate>0.482516545571738</Rate>
+									<Rate>0.603280823792552</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>23</Maturity>
-									<Rate>0.464846231857422</Rate>
+									<Rate>0.587909245561289</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>24</Maturity>
-									<Rate>0.447823025459173</Rate>
+									<Rate>0.572929334706148</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>25</Maturity>
-									<Rate>0.431423228558984</Rate>
+									<Rate>0.558331111553527</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>26</Maturity>
-									<Rate>0.41562401118034</Rate>
+									<Rate>0.54410485071162</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>27</Maturity>
-									<Rate>0.400403379406861</Rate>
+									<Rate>0.530241074591331</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>28</Maturity>
-									<Rate>0.385740144764808</Rate>
+									<Rate>0.516730547092263</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>29</Maturity>
-									<Rate>0.371613894726847</Rate>
+									<Rate>0.503564267449595</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>30</Maturity>
-									<Rate>0.358004964295993</Rate>
+									<Rate>0.490733464237736</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>31</Maturity>
-									<Rate>0.344894408630183</Rate>
+									<Rate>0.478229589526772</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>32</Maturity>
-									<Rate>0.332263976669374</Rate>
+									<Rate>0.466044313187799</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>33</Maturity>
-									<Rate>0.320096085728439</Rate>
+									<Rate>0.45416951734336</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>34</Maturity>
-									<Rate>0.308373797020507</Rate>
+									<Rate>0.442597290959285</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>35</Maturity>
-									<Rate>0.297080792076665</Rate>
+									<Rate>0.431319924574331</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>36</Maturity>
-									<Rate>0.286201350029198</Rate>
+									<Rate>0.420329905164106</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>37</Maturity>
-									<Rate>0.275720325726738</Rate>
+									<Rate>0.409619911135866</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>38</Maturity>
-									<Rate>0.26562312865087</Rate>
+									<Rate>0.399182807450845</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>39</Maturity>
-									<Rate>0.255895702604832</Rate>
+									<Rate>0.389011640870858</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>40</Maturity>
-									<Rate>0.246524506146036</Rate>
+									<Rate>0.379099635326033</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>41</Maturity>
-									<Rate>0.237496493735176</Rate>
+									<Rate>0.369440187400565</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>42</Maturity>
-									<Rate>0.228799097575677</Rate>
+									<Rate>0.360026861933497</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>43</Maturity>
-									<Rate>0.220420210118203</Rate>
+									<Rate>0.350853387731588</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>44</Maturity>
-									<Rate>0.212348167205874</Rate>
+									<Rate>0.341913653391426</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>45</Maturity>
-									<Rate>0.204571731836717</Rate>
+									<Rate>0.33320170322798</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>46</Maturity>
-									<Rate>0.197080078520762</Rate>
+									<Rate>0.324711733306907</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>47</Maturity>
-									<Rate>0.189862778209998</Rate>
+									<Rate>0.316438087577944</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>48</Maturity>
-									<Rate>0.182909783780207</Rate>
+									<Rate>0.308375254106831</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>49</Maturity>
-									<Rate>0.176211416044477</Rate>
+									<Rate>0.300517861403232</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>50</Maturity>
-									<Rate>0.169758350278908</Rate>
+									<Rate>0.292860674842234</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>51</Maturity>
-									<Rate>0.16354160324177</Rate>
+									<Rate>0.28539859317702</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>52</Maturity>
-									<Rate>0.157552520668032</Rate>
+									<Rate>0.278126645140393</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>53</Maturity>
-									<Rate>0.15178276522185</Rate>
+									<Rate>0.271039986132905</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>54</Maturity>
-									<Rate>0.14622430489026</Rate>
+									<Rate>0.264133894995363</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>55</Maturity>
-									<Rate>0.140869401801897</Rate>
+									<Rate>0.257403770863578</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>56</Maturity>
-									<Rate>0.135710601455189</Rate>
+									<Rate>0.250845130103248</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>57</Maturity>
-									<Rate>0.130740722341034</Rate>
+									<Rate>0.244453603322944</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>58</Maturity>
-									<Rate>0.12595284594549</Rate>
+									<Rate>0.238224932463211</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>59</Maturity>
-									<Rate>0.121340307118597</Rate>
+									<Rate>0.232154967959822</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>60</Maturity>
-									<Rate>0.116896684795893</Rate>
+									<Rate>0.226239665979334</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>61</Maturity>
-									<Rate>0.112615793059715</Rate>
+									<Rate>0.220475085725061</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>62</Maturity>
-									<Rate>0.108491672527862</Rate>
+									<Rate>0.214857386811706</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>63</Maturity>
-									<Rate>0.104518582057593</Rate>
+									<Rate>0.209382826706881</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>64</Maturity>
-									<Rate>0.100690990753455</Rate>
+									<Rate>0.204047758237815</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>65</Maturity>
-									<Rate>0.0970035702677791</Rate>
+									<Rate>0.198848627161596</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>66</Maturity>
-									<Rate>0.0934511873831482</Rate>
+									<Rate>0.193781969797322</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>67</Maturity>
-									<Rate>0.090028896866501</Rate>
+									<Rate>0.18884441071858</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>68</Maturity>
-									<Rate>0.0867319345849283</Rate>
+									<Rate>0.184032660504727</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>69</Maturity>
-									<Rate>0.0835557108735752</Rate>
+									<Rate>0.179343513549463</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>70</Maturity>
-									<Rate>0.0804958041464199</Rate>
+									<Rate>0.174773845925247</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>71</Maturity>
-									<Rate>0.0775479547410323</Rate>
+									<Rate>0.170320613302122</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>72</Maturity>
-									<Rate>0.0747080589887449</Rate>
+									<Rate>0.165980848919572</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>73</Maturity>
-									<Rate>0.0719721635019809</Rate>
+									<Rate>0.161751661610055</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>74</Maturity>
-									<Rate>0.0693364596707867</Rate>
+									<Rate>0.157630233872894</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>75</Maturity>
-									<Rate>0.0667972783609085</Rate>
+									<Rate>0.153613819997252</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>76</Maturity>
-									<Rate>0.0643510848060303</Rate>
+									<Rate>0.149699744232923</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>77</Maturity>
-									<Rate>0.061994473687065</Rate>
+									<Rate>0.145885399007741</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>78</Maturity>
-									<Rate>0.0597241643916474</Rate>
+									<Rate>0.142168243190407</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>79</Maturity>
-									<Rate>0.0575369964472296</Rate>
+									<Rate>0.138545800397573</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>80</Maturity>
-									<Rate>0.0554299251214219</Rate>
+									<Rate>0.135015657344068</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>81</Maturity>
-									<Rate>0.0534000171834548</Rate>
+									<Rate>0.131575462235159</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>82</Maturity>
-									<Rate>0.0514444468208605</Rate>
+									<Rate>0.128222923199776</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>83</Maturity>
-									<Rate>0.0495604917056906</Rate>
+									<Rate>0.124955806763659</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>84</Maturity>
-									<Rate>0.0477455292047931</Rate>
+									<Rate>0.121771936361409</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>85</Maturity>
-									<Rate>0.0459970327288743</Rate>
+									<Rate>0.11866919088645</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>86</Maturity>
-									<Rate>0.0443125682152611</Rate>
+									<Rate>0.115645503277943</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>87</Maturity>
-									<Rate>0.0426897907394694</Rate>
+									<Rate>0.112698859143698</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>88</Maturity>
-									<Rate>0.0411264412508605</Rate>
+									<Rate>0.109827295418183</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>89</Maturity>
-									<Rate>0.0396203434278419</Rate>
+									<Rate>0.107028899054719</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>90</Maturity>
-									<Rate>0.0381694006482335</Rate>
+									<Rate>0.104301805751002</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>91</Maturity>
-									<Rate>0.0367715930705835</Rate>
+									<Rate>0.101644198707097</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>92</Maturity>
-									<Rate>0.035424974822369</Rate>
+									<Rate>0.0990543074150821</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>93</Maturity>
-									<Rate>0.0341276712911683</Rate>
+									<Rate>0.0965304064795236</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>94</Maturity>
-									<Rate>0.0328778765150339</Rate>
+									<Rate>0.0940708144680164</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>95</Maturity>
-									<Rate>0.0316738506684325</Rate>
+									<Rate>0.0916738927910049</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>96</Maturity>
-									<Rate>0.0305139176402534</Rate>
+									<Rate>0.0893380446101485</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>97</Maturity>
-									<Rate>0.029396462700512</Rate>
+									<Rate>0.0870617137745024</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>98</Maturity>
-									<Rate>0.028319930252503</Rate>
+									<Rate>0.0848433837838034</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>99</Maturity>
-									<Rate>0.0272828216672703</Rate>
+									<Rate>0.082681576778172</Rate>
 								</ZeroPrice>
 								<ZeroPrice>
 									<Maturity>100</Maturity>
-									<Rate>0.0262836931973831</Rate>
+									<Rate>0.0805748525535564</Rate>
 								</ZeroPrice>
 							</InputCurve>
 							</ModelParameters>
@@ -718,7 +718,7 @@
 							<Name>CPI</Name>
 							<mean_reversion_level>0.025</mean_reversion_level>
 							<sigma>0.0125</sigma>
-							<starting_inflation_rate>0.013</starting_inflation_rate>
+							<starting_inflation_rate>0.01</starting_inflation_rate>
 							<mean_reversion_strength>0.2</mean_reversion_strength>
 							<asset_class>false</asset_class>
 						</Model>
@@ -728,7 +728,7 @@
 							<Name>AWE</Name>
 							<mean_reversion_level>0.04</mean_reversion_level>
 							<sigma>0.0125</sigma>
-							<starting_inflation_rate>0.019</starting_inflation_rate>
+							<starting_inflation_rate>0.021</starting_inflation_rate>
 							<mean_reversion_strength>0.2</mean_reversion_strength>
 							<asset_class>false</asset_class>
 						</Model>

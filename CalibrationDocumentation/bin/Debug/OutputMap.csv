@@ -11,7 +11,7 @@ Wildcard,File,XPATH,Decimals,Overwrite
 @@NEWHWSIGMAS@@,NewCalibFile,//Model[Name='AUYieldCurve']//VolatilityShortRate|//Model[Name='AUYieldCurve']//Volatility_short_rate,3,
 @@NEWHWSIGMAA@@,NewCalibFile,//Model[Name='AUYieldCurve']//VolatilityAdditionalParam|//Model[Name='AUYieldCurve']//volatility_additional_param,3,
 @@NEWHWGAMMA@@,NewCalibFile,//Model[Name='AUYieldCurve']//MarketPriceOfRisk|//Model[Name='AUYieldCurve']//market_price_of_risk,3,
-@@YIELDCURVECHART@@,Chart,YieldCurve_YCCHART,3,
+@@YIELDCURVECHART@@,Chart,YieldCurve_YCChart,3,
 @@OLDCASH1_5@@,OutputFile,OldCash[1|2],3,
 @@OLDCASH1_25@@,OutputFile,OldCash[2|2],3,
 @@OLDCASH1_50@@,OutputFile,OldCash[3|2],3,
