@@ -4720,7 +4720,7 @@
 			
 		</Operators>
 		<ScenarioFiles>
-		<!--	<ScenarioFile>
+			<ScenarioFile>
                 <ModelId>1111111</ModelId>                
 				<FileName>C:\Foresight\Results\AUYieldCurve_Stochastic.csv</FileName>        
 				<ValueTypes> 
@@ -4827,7 +4827,7 @@
                 <ValueTypes>
                     <ValueType>TOTALRETURN</ValueType>
                 </ValueTypes>
-			</ScenarioFile> -->
+			</ScenarioFile> 
 		</ScenarioFiles>
     </OutputRequirements>
 </Simulation>

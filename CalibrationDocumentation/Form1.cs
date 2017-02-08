@@ -308,15 +308,38 @@ namespace CalibrationDocumentation
             }
         }
 
+        private void ChangeScenarioFileLocation(string inCalibrationFile, string outCalibrationFile, string newLocation, string prefix = "")
+        {
+            //first we need to change the output location of the scenario files
+            XmlDocument CalibXml = new XmlDocument();
+            CalibXml.Load(inCalibrationFile);
+            string xPathQuery = "//ScenarioFiles//FileName";
+            XmlNodeList temp = CalibXml.SelectNodes(xPathQuery);
+            foreach (XmlNode _node in temp)
+            {
+                _node.InnerText = newLocation + prefix+ Path.GetFileName(_node.InnerText);
+            }
+            
+            CalibXml.Save(outCalibrationFile);
+        }
+
+
         private void button7_Click(object sender, EventArgs e)
         {
 
             string OldCalib = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\OldCalib.csv";
             string NewCalib = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\NewCalib.csv";
+
+
+            string OldCalibLocation = Path.GetTempPath() + Path.GetFileName(OldCalibFile.Text);
+            ChangeScenarioFileLocation(OldCalibFile.Text, OldCalibLocation, Path.GetTempPath(),"Old_");
+            string NewCalibLocation = Path.GetTempPath() + Path.GetFileName(NewCalibFile.Text);
+            ChangeScenarioFileLocation(NewCalibFile.Text, NewCalibLocation, Path.GetTempPath(),"New_");
+
             // Prepare the process to run
             ProcessStartInfo start = new ProcessStartInfo();
             // Enter in the command line arguments, everything you would enter after the executable name itself
-            start.Arguments = "--forceoutput --testdata "+OldCalibFile.Text+" --compdata c:\\results.csv --csvresdata "+ OldCalib;
+            start.Arguments = "--forceoutput --testdata "+ OldCalibLocation + " --compdata c:\\results.csv --csvresdata "+ OldCalib;
             // Enter the executable to run, including the complete path
             start.FileName = UnitTextharness.Text;
             // Do you want to show a console window?
@@ -333,7 +356,7 @@ namespace CalibrationDocumentation
             }
 
             // Enter in the command line arguments, everything you would enter after the executable name itself
-            start.Arguments = "--forceoutput --testdata " + NewCalibFile.Text + " --compdata c:\\results.csv --csvresdata " + NewCalib;
+            start.Arguments = "--forceoutput --testdata " + NewCalibLocation + " --compdata c:\\results.csv --csvresdata " + NewCalib;
             // Enter the executable to run, including the complete path
             start.FileName = UnitTextharness.Text;
             // Do you want to show a console window?
