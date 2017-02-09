@@ -115,7 +115,7 @@ namespace CalibrationDocumentation
                     }
                     if (values[0] != "" && values[1] != "")
                     {
-                        ModelMap.Add(values[0], new ModelID() { RangeName = values[1], VarName = values[2], timestep = int.Parse(values[3]), order = int.Parse(values[4]) });
+                        ModelMap.Add(values[0], new ModelID() { RangeName = values[1], VarName = values[2], timestep = int.Parse(values[3]), order = int.Parse(values[4]),LBound=Double.Parse(values[5]),UBound = Double.Parse(values[6])});
                     }
                 }
             }
@@ -202,7 +202,7 @@ namespace CalibrationDocumentation
                     continue;
                 }
 
-                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName);
+                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName,ModelMap[modelid].LBound,ModelMap[modelid].UBound);
 
                 var rng = xlWorkbook.Names.Item("Old" + ModelMap[modelid].RangeName).RefersToRange;
                 rng.Cells[1, 1] = HistData[0, 0];
@@ -229,7 +229,7 @@ namespace CalibrationDocumentation
                     continue;
                 }
 
-                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName);
+                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName, ModelMap[modelid].LBound, ModelMap[modelid].UBound);
 
                 var rng = xlWorkbook.Names.Item("New" + ModelMap[modelid].RangeName).RefersToRange;
                 rng.Cells[1, 1] = HistData[0, 0];
@@ -587,7 +587,7 @@ namespace CalibrationDocumentation
         }
 
 
-        private Double[,] HistogramData(string filename, int timestep, string Variable)
+        private Double[,] HistogramData(string filename, int timestep, string Variable, double LBound, double UBound)
         {
             List<double> ScenarioData = new List<double>();
             Double[,] Result = new Double[2,50];
@@ -617,8 +617,9 @@ namespace CalibrationDocumentation
                 }
                 //now process the data.
                 ScenarioData.Sort();
-                double min = ScenarioData.Min();
-                double max = ScenarioData.Max();
+                double min = LBound;
+                double max = UBound;
+                ScenarioData.Select(x => x > min && x < max);
                 double bucketsize = (max - min) / 50;
                 List<Double> Buckets = new List<double>();
                 Buckets.Add(min + bucketsize);
@@ -629,12 +630,13 @@ namespace CalibrationDocumentation
                 //Now we count
                 List<Double> Percentages = new List<double>();
                 double boundary = Buckets[0];
+                
                 for (int j = 0; j < ScenarioData.Count; j++)
                 {
                     if (boundary <= ScenarioData[j])
                     {
                         Percentages.Add((double) j / ScenarioData.Count);
-                        boundary = Buckets[Percentages.Count];
+                        boundary = Buckets[Math.Min(Percentages.Count,Buckets.Count-1)];
                     }
                 }
                 //Finish up to 50 buckets.

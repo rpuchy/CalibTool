@@ -19,5 +19,7 @@ namespace CalibrationDocumentation
         public int timestep { get; set; }
         public int order { get; set; }
         public List<double> ScenarioData { get; set; }
+        public double LBound { get; set; }
+        public double UBound { get; set; }
     }
 }

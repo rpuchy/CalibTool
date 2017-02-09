@@ -4352,6 +4352,26 @@
 						</ZeroPrice>
 					</values>
 				</calculate>
+			</Query>
+			<Query>
+				<QueryID>AuYieldCurve_SpotRate1</QueryID>
+				<Type>SIMVALUE</Type>
+				<calculate>
+					<for>
+						<model>
+							<where>
+								<id>1111111</id>
+							</where>
+						</model>
+					</for>
+					<values>
+						<value>CASHROLLUP</value>
+						<ZeroPrice>
+							<RateType>SPOT</RateType> 
+							<Maturities>1</Maturities>
+						</ZeroPrice>
+					</values>
+				</calculate>
 			</Query>			
 		</Queries>
         <Operators>	
@@ -5229,7 +5249,60 @@
 					<Type>VOLATILITY</Type>
 				</Operation>
 			</Operator>	
-			
+				<Operator>
+				<OperatorID>AuYieldCurve_SpotRate1_Percentiles</OperatorID>
+				<Operation>
+					<ApplyTo>
+						<OperationApplyTo>
+							<QueryID>AuYieldCurve_SpotRate1</QueryID>
+							<Value>ZCBPRICE</Value>
+							<TimeStepStart>0</TimeStepStart>
+							<TimeStepEnd>31</TimeStepEnd>
+							<Operation />
+						</OperationApplyTo>
+					</ApplyTo>
+					<Type>PERCENTILE</Type>
+					<Percentiles>
+						<PercentilesItem>99</PercentilesItem>
+						<PercentilesItem>95</PercentilesItem>
+						<PercentilesItem>75</PercentilesItem>
+						<PercentilesItem>50</PercentilesItem>
+						<PercentilesItem>25</PercentilesItem>
+						<PercentilesItem>5</PercentilesItem>
+						<PercentilesItem>1</PercentilesItem>
+					</Percentiles>
+				</Operation>
+			</Operator>
+			<Operator>
+				<OperatorID>AuYieldCurve_SpotRate1_Average</OperatorID>
+				<Operation>
+					<ApplyTo>
+						<OperationApplyTo>
+							<QueryID>AuYieldCurve_SpotRate1</QueryID>
+							<Value>ZCBPRICE</Value>
+							<TimeStepStart>0</TimeStepStart>
+							<TimeStepEnd>31</TimeStepEnd>
+							<Operation />
+						</OperationApplyTo>
+					</ApplyTo>
+					<Type>AVERAGE</Type>
+				</Operation>
+			</Operator>		
+			<Operator>
+				<OperatorID>AuYieldCurve_SpotRate1_Volatility</OperatorID>
+				<Operation>
+					<ApplyTo>
+						<OperationApplyTo>
+							<QueryID>AuYieldCurve_SpotRate1</QueryID>
+							<Value>ZCBPRICE</Value>
+							<TimeStepStart>0</TimeStepStart>
+							<TimeStepEnd>31</TimeStepEnd>
+							<Operation />
+						</OperationApplyTo>
+					</ApplyTo>
+					<Type>VOLATILITY</Type>
+				</Operation>
+			</Operator>				
 		</Operators>
 		<ScenarioFiles>
 			<ScenarioFile>
