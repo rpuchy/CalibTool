@@ -97,14 +97,175 @@ namespace CalibrationDocumentation
                 }
             }
 
+            Dictionary<string, ModelID> ModelMap = new Dictionary<string, ModelID>();
+            //Load Model ID MAP
+            using (var fs = File.OpenRead(@".\ModelIDMAP.csv"))
+            using (var reader = new StreamReader(fs))
+            {
+                //skip the first line
+                reader.ReadLine();
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    //remove whitespace from items.
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        values[i] = values[i].Trim();
+                    }
+                    if (values[0] != "" && values[1] != "")
+                    {
+                        ModelMap.Add(values[0], new ModelID() { RangeName = values[1], VarName = values[2], timestep = int.Parse(values[3]), order = int.Parse(values[4]) });
+                    }
+                }
+            }
+
 
             MemoryStream documentStream;
             String templatePath = Path.Combine(Environment.CurrentDirectory, ReportTemplate.Text);
             string path = CalibrationReport.Text;
             Excel.Application xlApp = new Excel.Application();
+            xlApp.DisplayAlerts = false;
+            string xlOrigLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
+
             string xlLoc = Path.GetTempPath() + "\\Results.xlsx";
+
+            File.Copy(xlOrigLoc, xlLoc, true);
+
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
             Excel.Worksheet xlWorksheet;
+
+            string OldCalib = Path.GetTempPath() + "\\OldCalib.csv";
+            string NewCalib = Path.GetTempPath() + "\\NewCalib.csv";
+
+
+            string OldCalibLocation = Path.GetTempPath() + Path.GetFileName(OldCalibFile.Text);
+            ChangeScenarioFileLocation(OldCalibFile.Text, OldCalibLocation, Path.GetTempPath(), "Old_");
+            string NewCalibLocation = Path.GetTempPath() + Path.GetFileName(NewCalibFile.Text);
+            ChangeScenarioFileLocation(NewCalibFile.Text, NewCalibLocation, Path.GetTempPath(), "New_");
+
+            // Prepare the process to run
+            ProcessStartInfo start = new ProcessStartInfo();
+            // Enter in the command line arguments, everything you would enter after the executable name itself
+            start.Arguments = "--forceoutput --testdata " + OldCalibLocation + " --compdata c:\\results.csv --csvresdata " + OldCalib;
+            // Enter the executable to run, including the complete path
+            start.FileName = UnitTextharness.Text;
+            // Do you want to show a console window?
+            start.WindowStyle = ProcessWindowStyle.Hidden;
+            start.CreateNoWindow = true;
+            int exitCode;
+            // Run the external process & wait for it to finish
+            using (Process proc = Process.Start(start))
+            {
+                proc.WaitForExit();
+
+                // Retrieve the app's exit code
+                exitCode = proc.ExitCode;
+            }
+
+            // Enter in the command line arguments, everything you would enter after the executable name itself
+            start.Arguments = "--forceoutput --testdata " + NewCalibLocation + " --compdata c:\\results.csv --csvresdata " + NewCalib;
+            // Enter the executable to run, including the complete path
+            start.FileName = UnitTextharness.Text;
+            // Do you want to show a console window?
+            start.WindowStyle = ProcessWindowStyle.Hidden;
+            start.CreateNoWindow = true;
+
+            // Run the external process & wait for it to finish
+            using (Process proc = Process.Start(start))
+            {
+                proc.WaitForExit();
+
+                // Retrieve the app's exit code
+                exitCode = proc.ExitCode;
+            }
+
+
+
+
+
+            //Now we need to process the scenario files.
+            XmlDocument CalibXml = new XmlDocument();
+            CalibXml.Load(OldCalibLocation);
+            string xPathQuery_filename = "//ScenarioFile//FileName";
+            string xPathQuery_ModelID = "//ScenarioFile//ModelId";
+            XmlNodeList sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
+            XmlNodeList sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
+
+            for (int i = 0; i < sfilenames.Count; i++)
+            {
+                string filename = sfilenames[i].InnerText;
+                string modelid = sModelIDs[i].InnerText;
+                ModelID temp;
+                if (!ModelMap.TryGetValue(modelid, out temp))
+                {
+                    continue;
+                }
+
+                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName);
+
+                var rng = xlWorkbook.Names.Item("Old" + ModelMap[modelid].RangeName).RefersToRange;
+                rng.Cells[1, 1] = HistData[0, 0];
+                rng.Cells[2, 1] = HistData[1, 0];
+
+                for (int j = 1; j < 50; j++)
+                {
+                    rng.Cells[1, j + 1] = HistData[0, j];
+                    rng.Cells[2, j + 1] = HistData[1, j] - HistData[1, j - 1];
+                }
+            }
+
+            CalibXml.Load(NewCalibLocation);
+            sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
+            sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
+
+            for (int i = 0; i < sfilenames.Count; i++)
+            {
+                string filename = sfilenames[i].InnerText;
+                string modelid = sModelIDs[i].InnerText;
+                ModelID temp;
+                if (!ModelMap.TryGetValue(modelid, out temp))
+                {
+                    continue;
+                }
+
+                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName);
+
+                var rng = xlWorkbook.Names.Item("New" + ModelMap[modelid].RangeName).RefersToRange;
+                rng.Cells[1, 1] = HistData[0, 0];
+                rng.Cells[2, 1] = HistData[1, 0];
+
+                for (int j = 1; j < 50; j++)
+                {
+                    rng.Cells[1, j + 1] = HistData[0, j];
+                    rng.Cells[2, j + 1] = HistData[1, j] - HistData[1, j - 1];
+                }
+            }
+
+            Excel.Workbook xlOldCalib = xlApp.Workbooks.Open(OldCalib);
+            Excel.Range srcrange;
+
+            Excel.Worksheet dstworkSheet = xlWorkbook.Worksheets.get_Item("OldCalib");
+            var range = xlWorkbook.Names.Item("OldCalib").RefersToRange;
+            range.ClearContents();
+            Excel.Worksheet srcworkSheet = xlOldCalib.Worksheets.get_Item(1);
+            srcrange = srcworkSheet.UsedRange;
+            srcrange.Copy(Type.Missing);
+            range.PasteSpecial(Excel.XlPasteType.xlPasteValues, Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone, Type.Missing, Type.Missing);
+            xlOldCalib.Close();
+
+            dstworkSheet = xlWorkbook.Worksheets.get_Item("NewCalib");
+            range = xlWorkbook.Names.Item("NewCalib").RefersToRange;
+            range.ClearContents();
+            Excel.Workbook xlNewCalib = xlApp.Workbooks.Open(NewCalib);
+            srcworkSheet = xlNewCalib.Worksheets.get_Item(1);
+            srcrange = srcworkSheet.UsedRange;
+            srcrange.Copy(Type.Missing);
+            range.PasteSpecial(Excel.XlPasteType.xlPasteValues, Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone, Type.Missing, Type.Missing);
+            xlNewCalib.Close();
+
+            srcrange = dstworkSheet.get_Range("A1:A1");
+            srcrange.Copy(Type.Missing);
 
             File.Copy(templatePath, path, true);
 
@@ -267,6 +428,76 @@ namespace CalibrationDocumentation
                }
 
             }
+
+
+
+
+
+            CalibXml = new XmlDocument();
+            OldCalibLocation = Path.GetTempPath() + Path.GetFileName(OldCalibFile.Text);
+            CalibXml.Load(OldCalibLocation);
+            xPathQuery_filename = "//ScenarioFile//FileName";
+            xPathQuery_ModelID = "//ScenarioFile//ModelId";
+            sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
+            sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
+
+            for (int i = 0; i < sfilenames.Count; i++)
+            {
+                string filename = sfilenames[i].InnerText;
+                string modelid = sModelIDs[i].InnerText;
+                ModelID temp;
+                if (!ModelMap.TryGetValue(modelid, out temp))
+                {
+                    continue;
+                }
+
+                List<double> ScenarioData = new List<double>();
+
+                using (var fs = File.OpenRead(filename))
+                using (var reader = new StreamReader(fs))
+                {
+                    //skip the first line
+                    var header = reader.ReadLine().Split(',');
+                    //Figure out the index to use
+                    int headertouse = 0;
+                    for (int j = 0; j < header.Length; j++)
+                    {
+                        if (header[j] == ModelMap[modelid].VarName)
+                        {
+                            headertouse = j;
+                        }
+
+                    }
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        if (int.Parse(values[1]) == ModelMap[modelid].timestep)
+                            ScenarioData.Add(Double.Parse(values[headertouse]));
+                    }
+                    ModelMap[modelid].ScenarioData = ScenarioData;
+                }
+            }
+
+
+            Word.Range rng2 = wrdDocument.Bookmarks["CORRELATIONMATRIX"].Range;
+
+            Word.Table CorrTable = rng2.Tables[1];
+
+            foreach (var kvp in ModelMap)
+            {
+                foreach (var kvp2 in ModelMap)
+                {
+                    if (kvp.Value.order < kvp2.Value.order)
+                    {
+                        CorrTable.Cell(1 + kvp.Value.order, 1 + kvp2.Value.order).Range.Text =
+                            Math.Round(correlation(kvp.Value.ScenarioData, kvp2.Value.ScenarioData), 2).ToString();
+                    }
+                }
+
+            }
+
+
             wrdDocument.Save();
             wrdDocument.Close(Type.Missing,Type.Missing,Type.Missing);
             wordApp.Quit();  
@@ -423,170 +654,7 @@ namespace CalibrationDocumentation
         private void button7_Click(object sender, EventArgs e)
         {
 
-            string OldCalib = Path.GetTempPath() + "\\OldCalib.csv";
-            string NewCalib = Path.GetTempPath() + "\\NewCalib.csv";
-
-
-            string OldCalibLocation = Path.GetTempPath() + Path.GetFileName(OldCalibFile.Text);
-            ChangeScenarioFileLocation(OldCalibFile.Text, OldCalibLocation, Path.GetTempPath(),"Old_");
-            string NewCalibLocation = Path.GetTempPath() + Path.GetFileName(NewCalibFile.Text);
-            ChangeScenarioFileLocation(NewCalibFile.Text, NewCalibLocation, Path.GetTempPath(),"New_");
-
-            // Prepare the process to run
-            ProcessStartInfo start = new ProcessStartInfo();
-            // Enter in the command line arguments, everything you would enter after the executable name itself
-            start.Arguments = "--forceoutput --testdata "+ OldCalibLocation + " --compdata c:\\results.csv --csvresdata "+ OldCalib;
-            // Enter the executable to run, including the complete path
-            start.FileName = UnitTextharness.Text;
-            // Do you want to show a console window?
-            start.WindowStyle = ProcessWindowStyle.Hidden;
-            start.CreateNoWindow = true;
-            int exitCode;
-            // Run the external process & wait for it to finish
-            using (Process proc = Process.Start(start))
-            {
-                proc.WaitForExit();
-
-                // Retrieve the app's exit code
-                exitCode = proc.ExitCode;
-            }
-
-            // Enter in the command line arguments, everything you would enter after the executable name itself
-            start.Arguments = "--forceoutput --testdata " + NewCalibLocation + " --compdata c:\\results.csv --csvresdata " + NewCalib;
-            // Enter the executable to run, including the complete path
-            start.FileName = UnitTextharness.Text;
-            // Do you want to show a console window?
-            start.WindowStyle = ProcessWindowStyle.Hidden;
-            start.CreateNoWindow = true;
-
-            // Run the external process & wait for it to finish
-            using (Process proc = Process.Start(start))
-            {
-                proc.WaitForExit();
-
-                // Retrieve the app's exit code
-                exitCode = proc.ExitCode;
-            }
-
-            Dictionary<string, ModelID> ModelMap = new Dictionary<string, ModelID>();
-            //Load Model ID MAP
-            using (var fs = File.OpenRead(@".\ModelIDMAP.csv"))
-            using (var reader = new StreamReader(fs))
-            {
-                //skip the first line
-                reader.ReadLine();
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    //remove whitespace from items.
-                    for (int i = 0; i < values.Length; i++)
-                    {
-                        values[i] = values[i].Trim();
-                    }
-                    if (values[0] != "" && values[1] != "")
-                    {
-                        ModelMap.Add(values[0], new ModelID() {RangeName = values[1], VarName = values[2], timestep = int.Parse(values[3])});
-                    }
-                }
-            }
-
-            Excel.Application xlApp = new Excel.Application();
-            xlApp.DisplayAlerts = false;
-            string xlOrigLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
-
-            string xlLoc = Path.GetTempPath() + "\\Results.xlsx";
-
-            File.Copy(xlOrigLoc,xlLoc,true);
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
-
-            //Now we need to process the scenario files.
-            XmlDocument CalibXml = new XmlDocument();
-            CalibXml.Load(OldCalibLocation);
-            string xPathQuery_filename = "//ScenarioFile//FileName";
-            string xPathQuery_ModelID = "//ScenarioFile//ModelId";
-            XmlNodeList sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
-            XmlNodeList sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
-             
-            for (int i = 0; i < sfilenames.Count; i++)
-            {
-                string filename = sfilenames[i].InnerText;
-                string modelid = sModelIDs[i].InnerText;
-                ModelID temp;
-                if (!ModelMap.TryGetValue(modelid, out temp))
-                {
-                    continue;
-                }
-
-                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName);
-
-                var rng = xlWorkbook.Names.Item("Old"+ModelMap[modelid].RangeName).RefersToRange;
-                rng.Cells[1, 1] = HistData[0,0];
-                rng.Cells[2, 1] = HistData[1,0];
-                
-                for (int j = 1; j < 50; j++)
-                {
-                     rng.Cells[1, j + 1] = HistData[0,j];
-                     rng.Cells[2, j + 1] = HistData[1,j]-HistData[1,j-1];
-                }
-            }
-
-            CalibXml.Load(NewCalibLocation);
-            sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
-            sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
-
-            for (int i = 0; i < sfilenames.Count; i++)
-            {
-                string filename = sfilenames[i].InnerText;
-                string modelid = sModelIDs[i].InnerText;
-                ModelID temp;
-                if (!ModelMap.TryGetValue(modelid, out temp))
-                {
-                    continue;
-                }
-
-                Double[,] HistData = HistogramData(filename, ModelMap[modelid].timestep, ModelMap[modelid].VarName);
-
-                var rng = xlWorkbook.Names.Item("New" + ModelMap[modelid].RangeName).RefersToRange;
-                rng.Cells[1, 1] = HistData[0, 0];
-                rng.Cells[2, 1] = HistData[1, 0];
-
-                for (int j = 1; j < 50; j++)
-                {
-                    rng.Cells[1, j + 1] = HistData[0, j];
-                    rng.Cells[2, j + 1] = HistData[1, j] - HistData[1, j - 1];
-                }
-            }
-
-            Excel.Workbook xlOldCalib = xlApp.Workbooks.Open(OldCalib);
-            Excel.Range srcrange;
-
-            Excel.Worksheet dstworkSheet = xlWorkbook.Worksheets.get_Item("OldCalib");
-            var range = xlWorkbook.Names.Item("OldCalib").RefersToRange;
-            range.ClearContents();
-            Excel.Worksheet srcworkSheet = xlOldCalib.Worksheets.get_Item(1);
-            srcrange = srcworkSheet.UsedRange;
-            srcrange.Copy(Type.Missing);                       
-            range.PasteSpecial(Excel.XlPasteType.xlPasteValues,Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone, Type.Missing, Type.Missing);
-            xlOldCalib.Close();
-
-            dstworkSheet = xlWorkbook.Worksheets.get_Item("NewCalib");
-            range = xlWorkbook.Names.Item("NewCalib").RefersToRange;
-            range.ClearContents();
-            Excel.Workbook xlNewCalib = xlApp.Workbooks.Open(NewCalib);
-            srcworkSheet = xlNewCalib.Worksheets.get_Item(1);
-            srcrange = srcworkSheet.UsedRange;
-            srcrange.Copy(Type.Missing);                        
-            range.PasteSpecial(Excel.XlPasteType.xlPasteValues,Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone, Type.Missing, Type.Missing);
-            xlNewCalib.Close();
             
-            srcrange = dstworkSheet.get_Range("A1:A1"); 
-            srcrange.Copy(Type.Missing);
-
-            xlWorkbook.Save();
-            xlWorkbook.Close();
-            
-            xlApp.Quit();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -606,101 +674,7 @@ namespace CalibrationDocumentation
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Word.Application wordApp = new Word.Application();
-            wordApp.DisplayAlerts = Word.WdAlertLevel.wdAlertsNone;
-            string ReportLoc = CalibrationReport.Text;
-            Word.Document wrdDocument = wordApp.Documents.Open(ReportLoc);
-
-            Dictionary<string, ModelID> ModelMap = new Dictionary<string, ModelID>();
-            //Load Model ID MAP
-            using (var fs = File.OpenRead(@".\ModelIDMAP.csv"))
-            using (var reader = new StreamReader(fs))
-            {
-                //skip the first line
-                reader.ReadLine();
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    //remove whitespace from items.
-                    for (int i = 0; i < values.Length; i++)
-                    {
-                        values[i] = values[i].Trim();
-                    }
-                    if (values[0] != "" && values[1] != "")
-                    {
-                        ModelMap.Add(values[0], new ModelID() { RangeName = values[1], VarName = values[2], timestep = int.Parse(values[3]), order = int.Parse(values[4])});
-                    }
-                }
-            }
-
-
-            XmlDocument CalibXml = new XmlDocument();
-            string OldCalibLocation = Path.GetTempPath() + Path.GetFileName(OldCalibFile.Text);
-            CalibXml.Load(OldCalibLocation);
-            string xPathQuery_filename = "//ScenarioFile//FileName";
-            string xPathQuery_ModelID = "//ScenarioFile//ModelId";
-            XmlNodeList sfilenames = CalibXml.SelectNodes(xPathQuery_filename);
-            XmlNodeList sModelIDs = CalibXml.SelectNodes(xPathQuery_ModelID);
-
-            for (int i = 0; i < sfilenames.Count; i++)
-            {
-                string filename = sfilenames[i].InnerText;
-                string modelid = sModelIDs[i].InnerText;
-                ModelID temp;
-                if (!ModelMap.TryGetValue(modelid, out temp))
-                {
-                    continue;
-                }
-
-                List<double> ScenarioData = new List<double>();
-
-                using (var fs = File.OpenRead(filename))
-                using (var reader = new StreamReader(fs))
-                {
-                    //skip the first line
-                    var header = reader.ReadLine().Split(',');
-                    //Figure out the index to use
-                    int headertouse = 0;
-                    for (int j = 0; j < header.Length; j++)
-                    {
-                        if (header[j] == ModelMap[modelid].VarName)
-                        {
-                            headertouse = j;
-                        }
-
-                    }
-                    while (!reader.EndOfStream)
-                    {
-                        var line = reader.ReadLine();
-                        var values = line.Split(',');
-                        if (int.Parse( values[1])==ModelMap[modelid].timestep)
-                        ScenarioData.Add(Double.Parse(values[headertouse]));
-                    }
-                    ModelMap[modelid].ScenarioData = ScenarioData;
-                }
-            }
-
-
-            Word.Range rng = wrdDocument.Bookmarks["CORRELATIONMATRIX"].Range;
-
-            Word.Table CorrTable =  rng.Tables[1];
-
-            foreach (var kvp in ModelMap)
-            {
-                foreach (var kvp2 in ModelMap)
-                {
-                    if (kvp.Value.order < kvp2.Value.order)
-                    {
-                        CorrTable.Cell(1 + kvp.Value.order, 1 + kvp2.Value.order).Range.Text =
-                            Math.Round(correlation(kvp.Value.ScenarioData, kvp2.Value.ScenarioData), 2).ToString();
-                    }
-                }
-
-            }
-
-            wrdDocument.Save();
-            wordApp.Quit();
+  
         }
     }
 }
