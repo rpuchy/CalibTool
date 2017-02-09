@@ -612,14 +612,17 @@ namespace CalibrationDocumentation
                     var values = line.Split(',');
                     if (int.Parse(values[1]) == timestep)
                     {
-                        ScenarioData.Add(Double.Parse(values[headertouse]));
+                        var val = double.Parse(values[headertouse]);
+                        if (val < UBound && val > LBound)
+                        {
+                            ScenarioData.Add(val);
+                        }
                     }
                 }
                 //now process the data.
                 ScenarioData.Sort();
                 double min = LBound;
                 double max = UBound;
-                ScenarioData.Select(x => x > min && x < max);
                 double bucketsize = (max - min) / 50;
                 List<Double> Buckets = new List<double>();
                 Buckets.Add(min + bucketsize);
