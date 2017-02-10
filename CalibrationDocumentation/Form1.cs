@@ -243,6 +243,32 @@ namespace CalibrationDocumentation
                 }
             }
 
+
+            //insert the yield curves into the Excel document
+            CalibXml.Load(OldCalibLocation);
+            string xPathQuery = "//Model[Name='AUYieldCurve']//ZeroPrice";            
+            XmlNodeList zeroprices = CalibXml.SelectNodes(xPathQuery);
+            foreach (XmlNode node in zeroprices)
+            {
+                var rng = xlWorkbook.Names.Item("OldYC").RefersToRange;
+                int maturity = int.Parse(node.SelectSingleNode("Maturity").InnerText);
+                rng.Cells[maturity, 1] = double.Parse(node.SelectSingleNode("Rate").InnerText);
+            }
+
+            CalibXml.Load(NewCalibLocation);
+            xPathQuery = "//Model[Name='AUYieldCurve']//ZeroPrice";
+            zeroprices = CalibXml.SelectNodes(xPathQuery);
+            foreach (XmlNode node in zeroprices)
+            {
+                var rng = xlWorkbook.Names.Item("NewYC").RefersToRange;
+                int maturity = int.Parse(node.SelectSingleNode("Maturity").InnerText);
+                rng.Cells[maturity, 1] = double.Parse(node.SelectSingleNode("Rate").InnerText);
+            }
+
+
+
+
+
             Excel.Workbook xlOldCalib = xlApp.Workbooks.Open(OldCalib);
             Excel.Range srcrange;
 
