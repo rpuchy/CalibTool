@@ -19,6 +19,7 @@ namespace CalibrationDocumentation
         public string Value { get; set; }
         public int decimals { get; set; }
         public string overwrite { get; set; }
+        public string vformat { get; set; }
     }
 
     

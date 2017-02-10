@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.IO;
+using System.Reflection;
 using DocumentFormat.OpenXml.Packaging;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -92,7 +93,7 @@ namespace CalibrationDocumentation
                     if ((values[0] != "" && values[1] != "" && values[2] != "" && values[3] != "")||(values[0]!="" &&values[4]!=""))
                     {
                         Mappings.Add(values[0],
-                            new DataMap() {File = values[1], xPath = values[2], decimals = int.Parse(values[3]), overwrite = values[4]});
+                            new DataMap() {File = values[1], xPath = values[2], decimals = int.Parse(values[3]), overwrite = values[4], vformat = values[5]} );
                     }
                 }
             }
@@ -318,7 +319,17 @@ namespace CalibrationDocumentation
 
                             if (temp != null && item.Value.decimals >= 0)
                             {
-                                item.Value.Value = Math.Round(Double.Parse(temp.InnerText), item.Value.decimals).ToString();
+                                if (item.Value.vformat == "percentage")
+                                {
+                                    item.Value.Value =
+                                        (Math.Round(Double.Parse(temp.InnerText), item.Value.decimals) * 100) + "%";
+                                    
+                                }
+                                else
+                                {
+                                    item.Value.Value =
+                                        Math.Round(Double.Parse(temp.InnerText), item.Value.decimals).ToString();
+                                }
                             }
                             else
                             {
@@ -353,7 +364,18 @@ namespace CalibrationDocumentation
 
                         if (item.Value.decimals >= 0)
                         {
-                            item.Value.Value = Math.Round(RangeData[int.Parse(Cells[0]), int.Parse(Cells[1])], item.Value.decimals).ToString();
+
+                            if (item.Value.vformat == "percentage")
+                            {
+                                item.Value.Value =
+                                    (Math.Round(RangeData[int.Parse(Cells[0]), int.Parse(Cells[1])], item.Value.decimals)).ToString("P"+(item.Value.decimals-2).ToString());
+
+                            }
+                            else
+                            {
+                                item.Value.Value =
+                                    Math.Round(RangeData[int.Parse(Cells[0]), int.Parse(Cells[1])], item.Value.decimals).ToString();
+                            }                           
                         }
                         else
                         {
@@ -498,7 +520,23 @@ namespace CalibrationDocumentation
             }
 
 
+            //do a search and replace for the calibdate in the footer which is not caught in the xml processing of the document   
+            //this is a hack and needs to be fixed!!!!! //TODO
+
+            FindReplaceAnywhere(wordApp, "@@CALIBDATE@@", Mappings["@@CALIBDATE@@"].Value);
+
             wrdDocument.Save();
+
+            object outputFileName = wrdDocument.FullName.Replace(".docx", ".pdf");
+            object fileFormat = Word.WdSaveFormat.wdFormatPDF;
+
+            // Save document into PDF Format
+            wrdDocument.SaveAs(ref outputFileName,
+                ref fileFormat, Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
             wrdDocument.Close(Type.Missing,Type.Missing,Type.Missing);
             wordApp.Quit();  
             xlWorkbook.Close();
@@ -507,7 +545,100 @@ namespace CalibrationDocumentation
             // Run Word to open the document:
             System.Diagnostics.Process.Start(path);
         }
-        
+
+
+        private static void searchAndReplaceInStory(Microsoft.Office.Interop.Word.Range rngStory, string strSearch, string strReplace)
+        {
+            rngStory.Find.ClearFormatting();
+            rngStory.Find.Replacement.ClearFormatting();
+            rngStory.Find.Text = strSearch;
+            rngStory.Find.Replacement.Text = strReplace;
+            rngStory.Find.Wrap = Word.WdFindWrap.wdFindContinue;
+
+            object arg1 = Type.Missing; // Find Pattern
+            object arg2 = Type.Missing; //MatchCase
+            object arg3 = Type.Missing; //MatchWholeWord
+            object arg4 = Type.Missing; //MatchWildcards
+            object arg5 = Type.Missing; //MatchSoundsLike
+            object arg6 = Type.Missing; //MatchAllWordForms
+            object arg7 = Type.Missing; //Forward
+            object arg8 = Type.Missing; //Wrap
+            object arg9 = Type.Missing; //Format
+            object arg10 = Type.Missing; //ReplaceWith
+            object arg11 = Word.WdReplace.wdReplaceAll; //Replace
+            object arg12 = Type.Missing; //MatchKashida
+            object arg13 = Type.Missing; //MatchDiacritics
+            object arg14 = Type.Missing; //MatchAlefHamza
+            object arg15 = Type.Missing; //MatchControl
+
+            rngStory.Find.Execute(ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8, ref arg9, ref arg10, ref arg11, ref arg12, ref arg13, ref arg14, ref arg15);
+        }
+
+        // Main routine to find text and replace it,
+        //   var app = new Microsoft.Office.Interop.Word.Application();
+        public static void FindReplaceAnywhere(Microsoft.Office.Interop.Word.Application app, string findText, string replaceText)
+        {
+            // http://forums.asp.net/p/1501791/3739871.aspx
+            var doc = app.ActiveDocument;
+
+            // Fix the skipped blank Header/Footer problem
+            //    http://msdn.microsoft.com/en-us/library/aa211923(office.11).aspx
+            Microsoft.Office.Interop.Word.WdStoryType lngJunk = doc.Sections[1].Headers[Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range.StoryType;
+
+            // Iterate through all story types in the current document
+            foreach (Microsoft.Office.Interop.Word.Range rngStory in doc.StoryRanges)
+            {
+
+                // Iterate through all linked stories
+                var internalRangeStory = rngStory;
+
+                do
+                {
+                    searchAndReplaceInStory(internalRangeStory, findText, replaceText);
+
+                    try
+                    {
+                        //   6 , 7 , 8 , 9 , 10 , 11 -- http://msdn.microsoft.com/en-us/library/aa211923(office.11).aspx
+                        switch (internalRangeStory.StoryType)
+                        {
+                            case Microsoft.Office.Interop.Word.WdStoryType.wdEvenPagesHeaderStory: // 6
+                            case Microsoft.Office.Interop.Word.WdStoryType.wdPrimaryHeaderStory:   // 7
+                            case Microsoft.Office.Interop.Word.WdStoryType.wdEvenPagesFooterStory: // 8
+                            case Microsoft.Office.Interop.Word.WdStoryType.wdPrimaryFooterStory:   // 9
+                            case Microsoft.Office.Interop.Word.WdStoryType.wdFirstPageHeaderStory: // 10
+                            case Microsoft.Office.Interop.Word.WdStoryType.wdFirstPageFooterStory: // 11
+
+                                if (internalRangeStory.ShapeRange.Count > 0)
+                        {
+                                    foreach (Microsoft.Office.Interop.Word.Shape oShp in internalRangeStory.ShapeRange)
+                                    {
+                                        if (oShp.TextFrame.HasText != 0)
+                                        {
+                                            searchAndReplaceInStory(oShp.TextFrame.TextRange, findText, replaceText);
+                                        }
+                                    }
+                                }
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                    catch
+                    {
+                        // On Error Resume Next
+                    }
+
+                    // ON ERROR GOTO 0 -- http://www.harding.edu/fmccown/vbnet_csharp_comparison.html
+
+                    // Get next linked story (if any)
+                    internalRangeStory = internalRangeStory.NextStoryRange;
+                } while (internalRangeStory != null); // http://www.harding.edu/fmccown/vbnet_csharp_comparison.html
+            }
+
+        }
+
+
         private void button3_Click(object sender, EventArgs e)
         {
     
@@ -656,11 +787,7 @@ namespace CalibrationDocumentation
             return Result;
             }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
 
-            
-        }
 
         private void button8_Click(object sender, EventArgs e)
         {
@@ -677,9 +804,6 @@ namespace CalibrationDocumentation
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-  
-        }
+
     }
 }
