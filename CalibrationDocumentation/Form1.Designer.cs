@@ -45,12 +45,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.UnitTextharness = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ScenarioOutput = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(344, 267);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(348, 334);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(126, 51);
             this.button1.TabIndex = 0;
@@ -60,8 +64,8 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(203, 267);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(207, 334);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 51);
             this.button2.TabIndex = 1;
@@ -82,7 +86,7 @@
             // NewCalibFile
             // 
             this.NewCalibFile.Location = new System.Drawing.Point(172, 53);
-            this.NewCalibFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NewCalibFile.Margin = new System.Windows.Forms.Padding(2);
             this.NewCalibFile.Name = "NewCalibFile";
             this.NewCalibFile.Size = new System.Drawing.Size(466, 20);
             this.NewCalibFile.TabIndex = 3;
@@ -91,7 +95,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(646, 53);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(38, 16);
             this.button3.TabIndex = 4;
@@ -102,7 +106,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(646, 96);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(38, 16);
             this.button4.TabIndex = 7;
@@ -113,7 +117,7 @@
             // OldCalibFile
             // 
             this.OldCalibFile.Location = new System.Drawing.Point(172, 96);
-            this.OldCalibFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OldCalibFile.Margin = new System.Windows.Forms.Padding(2);
             this.OldCalibFile.Name = "OldCalibFile";
             this.OldCalibFile.Size = new System.Drawing.Size(466, 20);
             this.OldCalibFile.TabIndex = 6;
@@ -132,7 +136,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(646, 141);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(38, 16);
             this.button5.TabIndex = 10;
@@ -143,7 +147,7 @@
             // ReportTemplate
             // 
             this.ReportTemplate.Location = new System.Drawing.Point(172, 141);
-            this.ReportTemplate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ReportTemplate.Margin = new System.Windows.Forms.Padding(2);
             this.ReportTemplate.Name = "ReportTemplate";
             this.ReportTemplate.Size = new System.Drawing.Size(466, 20);
             this.ReportTemplate.TabIndex = 9;
@@ -162,7 +166,7 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(646, 188);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(38, 16);
             this.button6.TabIndex = 13;
@@ -173,7 +177,7 @@
             // CalibrationReport
             // 
             this.CalibrationReport.Location = new System.Drawing.Point(172, 188);
-            this.CalibrationReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CalibrationReport.Margin = new System.Windows.Forms.Padding(2);
             this.CalibrationReport.Name = "CalibrationReport";
             this.CalibrationReport.Size = new System.Drawing.Size(466, 20);
             this.CalibrationReport.TabIndex = 12;
@@ -201,7 +205,7 @@
             // UnitTextharness
             // 
             this.UnitTextharness.Location = new System.Drawing.Point(172, 223);
-            this.UnitTextharness.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UnitTextharness.Margin = new System.Windows.Forms.Padding(2);
             this.UnitTextharness.Name = "UnitTextharness";
             this.UnitTextharness.Size = new System.Drawing.Size(466, 20);
             this.UnitTextharness.TabIndex = 16;
@@ -210,7 +214,7 @@
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(646, 223);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(38, 20);
             this.button8.TabIndex = 17;
@@ -218,11 +222,41 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(55, 266);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Scenario File Location";
+            // 
+            // ScenarioOutput
+            // 
+            this.ScenarioOutput.Location = new System.Drawing.Point(173, 259);
+            this.ScenarioOutput.Name = "ScenarioOutput";
+            this.ScenarioOutput.Size = new System.Drawing.Size(465, 20);
+            this.ScenarioOutput.TabIndex = 19;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(646, 259);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(38, 20);
+            this.button7.TabIndex = 20;
+            this.button7.Text = "...";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 362);
+            this.ClientSize = new System.Drawing.Size(731, 452);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.ScenarioOutput);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.UnitTextharness);
             this.Controls.Add(this.label5);
@@ -240,7 +274,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Calibration Report";
             this.ResumeLayout(false);
@@ -267,6 +301,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox UnitTextharness;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox ScenarioOutput;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

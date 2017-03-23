@@ -30,3 +30,4 @@ C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.Pro
 C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csproj.GenerateResource.Cache
 C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.exe
 C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.pdb
+C:\Git\CalibTool\CalibrationDocumentation\obj\Debug\CalibrationDocumentation.csprojResolveAssemblyReference.cache

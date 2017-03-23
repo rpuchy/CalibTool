@@ -129,30 +129,39 @@ namespace CalibrationDocumentation
             xlApp.DisplayAlerts = false;
             string xlOrigLoc = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Results.xlsx";
 
-            string xlLoc = Path.GetTempPath() + "\\Results.xlsx";
+           
+
+           
+            string xlLoc = ScenarioOutput.Text + "\\Results.xlsx";
+            string OldCalib = ScenarioOutput.Text + "OldCalib_summary.csv";
+            string NewCalib = ScenarioOutput.Text + "NewCalib_summary.csv";
+
+            if (ScenarioOutput.Text=="")
+            {
+                ScenarioOutput.Text = Path.GetTempPath();
+                OldCalib = Path.GetTempPath() + "OldCalib_summary.csv";
+                NewCalib = Path.GetTempPath() + "NewCalib_summary.csv";
+                xlLoc = Path.GetTempPath() + "\\Results.xlsx";
+            }
 
             File.Copy(xlOrigLoc, xlLoc, true);
 
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(xlLoc);
             Excel.Worksheet xlWorksheet;
 
-            string OldCalib = Path.GetTempPath() + "\\OldCalib.csv";
-            string NewCalib = Path.GetTempPath() + "\\NewCalib.csv";
-
-
             string OldCalibLocation = Path.GetTempPath() + Path.GetFileName(OldCalibFile.Text);
-            ChangeScenarioFileLocation(OldCalibFile.Text, OldCalibLocation, Path.GetTempPath(), "Old_");
+            ChangeScenarioFileLocation(OldCalibFile.Text, OldCalibLocation, ScenarioOutput.Text, "Old_");
             string NewCalibLocation = Path.GetTempPath() + Path.GetFileName(NewCalibFile.Text);
-            ChangeScenarioFileLocation(NewCalibFile.Text, NewCalibLocation, Path.GetTempPath(), "New_");
+            ChangeScenarioFileLocation(NewCalibFile.Text, NewCalibLocation, ScenarioOutput.Text, "New_");
 
             // Prepare the process to run
             ProcessStartInfo start = new ProcessStartInfo();
             // Enter in the command line arguments, everything you would enter after the executable name itself
-            start.Arguments = "--forceoutput --testdata " + OldCalibLocation + " --compdata c:\\results.csv --csvresdata " + OldCalib;
+            start.Arguments = "--forceoutput --testdata \"" + OldCalibLocation + "\" --compdata c:\\results.csv --csvresdata \"" + OldCalib + "\"";
             // Enter the executable to run, including the complete path
             start.FileName = UnitTextharness.Text;
             // Do you want to show a console window?
-            start.WindowStyle = ProcessWindowStyle.Hidden;
+            start.WindowStyle = ProcessWindowStyle.Normal;
             start.CreateNoWindow = true;
             int exitCode;
             // Run the external process & wait for it to finish
@@ -165,11 +174,11 @@ namespace CalibrationDocumentation
             }
 
             // Enter in the command line arguments, everything you would enter after the executable name itself
-            start.Arguments = "--forceoutput --testdata " + NewCalibLocation + " --compdata c:\\results.csv --csvresdata " + NewCalib;
+            start.Arguments = "--forceoutput --testdata \"" + NewCalibLocation + "\" --compdata c:\\results.csv --csvresdata \"" + NewCalib + "\"";
             // Enter the executable to run, including the complete path
             start.FileName = UnitTextharness.Text;
             // Do you want to show a console window?
-            start.WindowStyle = ProcessWindowStyle.Hidden;
+            start.WindowStyle = ProcessWindowStyle.Normal;
             start.CreateNoWindow = true;
 
             // Run the external process & wait for it to finish
@@ -564,7 +573,8 @@ namespace CalibrationDocumentation
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
             wrdDocument.Close(Type.Missing,Type.Missing,Type.Missing);
-            wordApp.Quit();  
+            wordApp.Quit();
+            xlWorkbook.Save();
             xlWorkbook.Close();
             xlApp.Quit();            
             
@@ -830,6 +840,12 @@ namespace CalibrationDocumentation
             }
         }
 
-
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ScenarioOutput.Text = folderBrowserDialog1.SelectedPath+"\\";
+            }
+        }
     }
 }
